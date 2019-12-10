@@ -8,7 +8,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
- * description
+ * 56. Merge Intervals
+ * 56. 合并区间
  *
  * @author FXYGR @date 2019-12-10
  */

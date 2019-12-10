@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * 56. Merge Intervals(https://leetcode.com/problems/merge-intervals/)
- * 56. 合并区间(https://leetcode-cn.com/problems/merge-intervals/)
+ * 56. Merge Intervals
+ * (https://leetcode.com/problems/merge-intervals/)
+ * 56. 合并区间
+ * (https://leetcode-cn.com/problems/merge-intervals/)
  *
  * @author FXYGR @date 2019-12-10
  */
@@ -13,47 +15,27 @@ public class MergeIntervals {
 
 	public int[][] merge(int[][] intervals) {
 		if (intervals == null || intervals.length <= 0) {
-			return intervals;
+			return new int[][]{};
 		}
 		sort(intervals);
 
-		int[][] resultIntervals = new int[intervals.length][intervals[0].length];
-		int resultIntervalIndex = 0;
+		int[][] results = new int[intervals.length][intervals[0].length];
+		int resultIndex = 0;
 
-		boolean overlapped = false;
+		results[resultIndex][0] = intervals[0][0];
+		results[resultIndex][1] = intervals[0][1];
 
-		for (int i = 0; i < intervals.length; ++i) {
-			if (!overlapped) {
-				resultIntervals[resultIntervalIndex][0] = intervals[i][0];
-			}
-			if (intervals[i][0] < resultIntervals[resultIntervalIndex][0]) {
-				resultIntervals[resultIntervalIndex][0] = intervals[i][0];
-			}
-			if (i == intervals.length - 1) {
-				if (intervals[i][1] > resultIntervals[resultIntervalIndex][1]) {
-					resultIntervals[resultIntervalIndex][1] = intervals[i][1];
+		for (int i = 1; i < intervals.length; ++i) {
+			if (results[resultIndex][1] >= intervals[i][0]) {
+				if (results[resultIndex][1] < intervals[i][1]) {
+					results[resultIndex][1] = intervals[i][1];
 				}
-				++resultIntervalIndex;
-				break;
-			}
-			if (intervals[i][1] >= intervals[i + 1][0]
-					|| resultIntervals[resultIntervalIndex][1] >= intervals[i + 1][0]) {
-				if (intervals[i][1] > resultIntervals[resultIntervalIndex][1]) {
-					resultIntervals[resultIntervalIndex][1] = intervals[i][1];
-				}
-				if (intervals[i + 1][1] > resultIntervals[resultIntervalIndex][1]) {
-					resultIntervals[resultIntervalIndex][1] = intervals[i + 1][1];
-				}
-				overlapped = true;
 				continue;
 			}
-			if (intervals[i][1] > resultIntervals[resultIntervalIndex][1]) {
-				resultIntervals[resultIntervalIndex][1] = intervals[i][1];
-			}
-			++resultIntervalIndex;
-			overlapped = false;
+			results[++resultIndex][0] = intervals[i][0];
+			results[resultIndex][1] = intervals[i][1];
 		}
-		return Arrays.copyOf(resultIntervals, resultIntervalIndex);
+		return Arrays.copyOf(results, resultIndex + 1);
 	}
 
 	private void sort(int[][] intervals) {
