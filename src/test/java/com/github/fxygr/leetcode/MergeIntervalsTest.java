@@ -26,6 +26,8 @@ public class MergeIntervalsTest {
 	@Test
 	public void merge() {
 		int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+		print(intervals, "start: ");
+
 		intervals = merge(intervals);
 		//  {{1, 6}, {8, 10}, {15, 18}}
 		assertArrayEquals(new int[][]{{1, 6}, {8, 10}, {15, 18}}, intervals);
@@ -56,14 +58,24 @@ public class MergeIntervalsTest {
 		assertArrayEquals(new int[][]{{0, 1}, {3, 3}}, intervals);
 
 		intervals = new int[][]{{5, 6}, {1, 2}, {2, 4}, {5, 5}, {5, 5}, {3, 3}};
-		intervals = merge(intervals);
+		int[][] results = merge(intervals);
 		//  {{1, 4}, {5, 6}}
-		assertArrayEquals(new int[][]{{1, 4}, {5, 6}}, intervals);
+		assertArrayEquals(new int[][]{{1, 4}, {5, 6}}, results);
+
+		print(intervals, "end: ");
 	}
 
 	private int[][] merge(int[][] intervals) {
 		print(intervals, "Input");
 		intervals = mergeIntervals.merge(intervals);
+		print(intervals, "Output");
+		System.out.println();
+		return intervals;
+	}
+
+	private int[][] mergeByArrayList(int[][] intervals) {
+		print(intervals, "Input");
+		intervals = mergeIntervals.mergeByArrayList(intervals);
 		print(intervals, "Output");
 		System.out.println();
 		return intervals;
@@ -75,6 +87,48 @@ public class MergeIntervalsTest {
 			System.out.print("[" + interval[0] + ", " + interval[1] + "]");
 		}
 		System.out.println();
+	}
+
+	@Test
+	public void mergeByArrayList() {
+		int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+		print(intervals, "start: ");
+
+		intervals = mergeByArrayList(intervals);
+		//  {{1, 6}, {8, 10}, {15, 18}}
+		assertArrayEquals(new int[][]{{1, 6}, {8, 10}, {15, 18}}, intervals);
+
+		intervals = new int[][]{{1, 4}, {4, 5}};
+		intervals = mergeByArrayList(intervals);
+		//  {{1, 5}}
+		assertArrayEquals(new int[][]{{1, 5}}, intervals);
+
+		intervals = new int[][]{};
+		intervals = mergeByArrayList(intervals);
+		//  {}
+		assertArrayEquals(new int[][]{}, intervals);
+
+		intervals = new int[][]{{1, 4}, {0, 4}};
+		intervals = mergeByArrayList(intervals);
+		//  {{0, 4}}
+		assertArrayEquals(new int[][]{{0, 4}}, intervals);
+
+		intervals = new int[][]{{1, 4}, {0, 0}};
+		intervals = mergeByArrayList(intervals);
+		//  {{0, 0}, {1, 4}}
+		assertArrayEquals(new int[][]{{0, 0}, {1, 4}}, intervals);
+
+		intervals = new int[][]{{3, 3}, {0, 1}, {0, 0}};
+		intervals = mergeByArrayList(intervals);
+		//  {{0, 1}, {3, 3}}
+		assertArrayEquals(new int[][]{{0, 1}, {3, 3}}, intervals);
+
+		intervals = new int[][]{{5, 6}, {1, 2}, {2, 4}, {5, 5}, {5, 5}, {3, 3}};
+		int[][] results = mergeByArrayList(intervals);
+		//  {{1, 4}, {5, 6}}
+		assertArrayEquals(new int[][]{{1, 4}, {5, 6}}, results);
+
+		print(intervals, "end: ");
 	}
 
 }
