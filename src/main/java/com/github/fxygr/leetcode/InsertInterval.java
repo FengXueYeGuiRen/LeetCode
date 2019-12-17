@@ -53,9 +53,11 @@ public class InsertInterval {
 	                  int[][] intervals, int insertIndex) {
 		int i = insertIndex - 1;
 
-		int left = intervals[i][0], right = intervals[i][1];
+		int left, right;
 		//  insertIndex < 1
 		if (insertIndex > 0) {
+			left = intervals[i][0];
+			right = intervals[i][1];
 			if (right >= mergingInterval[0]) {
 				//  overlapping
 				right = Math.max(mergingInterval[1], right);
@@ -111,7 +113,7 @@ public class InsertInterval {
 			index = mid;
 			break;
 		}
-		return index < intervals.length ? index : intervals.length - 1;
+		return index;
 	}
 
 }
