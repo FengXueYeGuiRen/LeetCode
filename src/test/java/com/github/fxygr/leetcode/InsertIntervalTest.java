@@ -36,6 +36,11 @@ public class InsertIntervalTest {
 		assertArrayEquals(intervals, results);
 
 		intervals = new int[][]{{1, 5}};
+		newInterval = new int[]{0, 3};
+		results = insert(intervals, newInterval);
+		assertArrayEquals(new int[][]{{0, 5}}, results);
+
+		intervals = new int[][]{{1, 5}};
 		newInterval = new int[]{2, 3};
 		results = insert(intervals, newInterval);
 		assertArrayEquals(new int[][]{{1, 5}}, results);

@@ -67,7 +67,6 @@ public class InsertInterval {
 				right = mergingInterval[1];
 			}
 		} else {//  insertIndex == 0
-			i = 0;
 			left = mergingInterval[0];
 			right = mergingInterval[1];
 		}
