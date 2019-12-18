@@ -14,7 +14,37 @@ public class SortColors {
 		if (nums == null || nums.length < 1) {
 			return;
 		}
-		quickSort(nums, 0, nums.length - 1);
+		quick3waySort(nums, 0, nums.length - 1);
+	}
+
+	/**
+	 * 三向切分快速排序
+	 *
+	 * @param nums
+	 * @param lo
+	 * @param hi
+	 */
+	private void quick3waySort(int[] nums, int lo, int hi) {
+		if (hi <= lo) {
+			return;
+		}
+		int lt = lo, i = lo + 1, gt = hi;
+		int num = nums[lo];
+		int cmp;
+		while (i <= gt) {
+			cmp = Integer.compare(nums[i], num);
+			if (cmp < 0) {
+				exch(nums, lt++, i++);
+			} else if (cmp > 0) {
+				exch(nums, i, gt--);
+			} else {
+				++i;
+			}
+		}
+		//  left
+		quick3waySort(nums, lo, lt - 1);
+		//  right
+		quick3waySort(nums, gt + 1, hi);
 	}
 
 	private void quickSort(int[] nums, int lo, int hi) {
