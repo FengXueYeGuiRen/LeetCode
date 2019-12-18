@@ -17,6 +17,18 @@ public class SortColors {
 		quick3waySort(nums, 0, nums.length - 1);
 	}
 
+	private void insertionSort(int[] nums) {
+		int num;
+		for (int i = 1; i < nums.length; ++i) {
+			num = nums[i];
+			int j = i - 1;
+			for (; j >= 0 && less(num, nums[j]); --j) {
+				nums[j + 1] = nums[j];
+			}
+			nums[j + 1] = num;
+		}
+	}
+
 	/**
 	 * 三向切分快速排序
 	 *
@@ -29,8 +41,8 @@ public class SortColors {
 			return;
 		}
 		int lt = lo, i = lo + 1, gt = hi;
-		int num = nums[lo];
 		int cmp;
+		int num = 1;
 		while (i <= gt) {
 			cmp = Integer.compare(nums[i], num);
 			if (cmp < 0) {
@@ -41,10 +53,6 @@ public class SortColors {
 				++i;
 			}
 		}
-		//  left
-		quick3waySort(nums, lo, lt - 1);
-		//  right
-		quick3waySort(nums, gt + 1, hi);
 	}
 
 	private void quickSort(int[] nums, int lo, int hi) {
