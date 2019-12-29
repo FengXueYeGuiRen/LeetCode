@@ -1,6 +1,5 @@
 package com.github.fxygr.leetcode;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,34 +17,20 @@ public class TwoSum {
 		if (nums == null || nums.length < 1) {
 			return nums;
 		}
-		Map<Integer, Integer> numIndexMap = trans(nums);
-
-		int[] results = new int[nums.length];
-		int resultsIndex = -1;
+		Map<Integer, Integer> numIndexMap =
+				new HashMap<>(nums.length * 2);
 
 		int m, n;
 		for (int i = 0; i < nums.length; ++i) {
 			m = nums[i];
 			n = target - m;
 
-			numIndexMap.remove(m, i);
 			if (numIndexMap.containsKey(n)) {
-				results[++resultsIndex] = i;
-				results[++resultsIndex] = numIndexMap.remove(n);
-
-				continue;
+				return new int[]{numIndexMap.get(n), i};
 			}
+			numIndexMap.put(m, i);
 		}
-		return Arrays.copyOf(results, resultsIndex + 1);
-	}
-
-	private Map<Integer, Integer> trans(int[] nums) {
-		Map<Integer, Integer> numIndexMap =
-				new HashMap<>(nums.length * 2);
-		for (int i = 0; i < nums.length; ++i) {
-			numIndexMap.put(nums[i], i);
-		}
-		return numIndexMap;
+		return new int[0];
 	}
 
 }
