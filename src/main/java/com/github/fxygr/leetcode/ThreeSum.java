@@ -1,9 +1,6 @@
 package com.github.fxygr.leetcode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * 15. 3Sum
@@ -21,21 +18,20 @@ public class ThreeSum {
 		if (nums == null || nums.length < 1) {
 			return Collections.emptyList();
 		}
+		Arrays.sort(nums);
+
 		int resultsSize = (nums.length / 3) + 1;
 		List<List<Integer>> results =
 				new ArrayList<>(resultsSize);
 		HashSet<String> hashSet = new HashSet<>(resultsSize);
 		for (int i = 0; i < nums.length - 2; ++i) {
-			Integer x = nums[i];
 			for (int j = i + 1; j < nums.length - 1; ++j) {
-				Integer y = nums[j];
 				for (int k = j + 1; k < nums.length; ++k) {
-					Integer z = nums[k];
 
-					String hash = hash(x, y, z);
+					String hash = hash(nums[i], nums[j], nums[k]);
 					if (!hashSet.contains(hash)
-							&& x + y + z == SUM) {
-						results.add(newList(x, y, z));
+							&& nums[i] + nums[j] + nums[k] == SUM) {
+						results.add(newList(nums[i], nums[j], nums[k]));
 
 						hashSet.add(hash);
 					}
@@ -47,16 +43,6 @@ public class ThreeSum {
 
 	private String hash(
 			Integer x, Integer y, Integer z) {
-		if (x > y) {
-			Integer t = x;
-			x = y;
-			y = t;
-		}
-		if (z < x) {
-			return "" + z + x + y;
-		} else if (z < y) {
-			return "" + x + z + y;
-		}
 		return "" + x + y + z;
 	}
 
