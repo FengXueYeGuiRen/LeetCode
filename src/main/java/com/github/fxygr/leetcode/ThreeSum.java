@@ -24,17 +24,19 @@ public class ThreeSum {
 		int resultsSize = (nums.length / 3) + 1;
 		List<List<Integer>> results =
 				new ArrayList<>(resultsSize);
-		HashSet<Integer> hashSet = new HashSet<>(resultsSize * 2);
+		HashSet<String> hashSet = new HashSet<>(resultsSize);
 		for (int i = 0; i < nums.length - 2; ++i) {
+			Integer x = nums[i];
 			for (int j = i + 1; j < nums.length - 1; ++j) {
-				for (int z = j + 1; z < nums.length; ++z) {
-					Integer hash =
-							Integer.hashCode(nums[i])
-									^ Integer.hashCode(nums[j])
-									^ Integer.hashCode(nums[z]);
+				Integer y = nums[j];
+				for (int k = j + 1; k < nums.length; ++k) {
+					Integer z = nums[k];
+
+					String hash = hash(x, y, z);
 					if (!hashSet.contains(hash)
-							&& nums[i] + nums[j] + nums[z] == SUM) {
-						results.add(newList(nums[i], nums[j], nums[z]));
+							&& x + y + z == SUM) {
+						results.add(newList(x, y, z));
+
 						hashSet.add(hash);
 					}
 				}
@@ -43,13 +45,28 @@ public class ThreeSum {
 		return results;
 	}
 
-	List<Integer> newList(
-			Integer i, Integer j, Integer z) {
+	private String hash(
+			Integer x, Integer y, Integer z) {
+		if (x > y) {
+			Integer t = x;
+			x = y;
+			y = t;
+		}
+		if (z < x) {
+			return "" + z + x + y;
+		} else if (z < y) {
+			return "" + x + z + y;
+		}
+		return "" + x + y + z;
+	}
+
+	private List<Integer> newList(
+			Integer i, Integer j, Integer k) {
 		List<Integer> list =
 				new ArrayList<>(3);
 		list.add(i);
 		list.add(j);
-		list.add(z);
+		list.add(k);
 
 		return list;
 	}
