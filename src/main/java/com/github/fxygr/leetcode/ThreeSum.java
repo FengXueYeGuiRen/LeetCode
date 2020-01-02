@@ -1,6 +1,9 @@
 package com.github.fxygr.leetcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 15. 3Sum
@@ -15,7 +18,7 @@ public class ThreeSum {
 	private static int SUM = 0;
 
 	public List<List<Integer>> threeSum(int[] nums) {
-		if (nums == null || nums.length < 1) {
+		if (nums == null || nums.length < 2) {
 			return Collections.emptyList();
 		}
 		Arrays.sort(nums);
@@ -23,38 +26,37 @@ public class ThreeSum {
 		int resultsSize = (nums.length / 3) + 1;
 		List<List<Integer>> results =
 				new ArrayList<>(resultsSize);
-		HashSet<String> hashSet = new HashSet<>(resultsSize);
+
 		for (int i = 0; i < nums.length - 2; ++i) {
-			for (int j = i + 1; j < nums.length - 1; ++j) {
-				for (int k = j + 1; k < nums.length; ++k) {
-
-					String hash = hash(nums[i], nums[j], nums[k]);
-					if (!hashSet.contains(hash)
-							&& nums[i] + nums[j] + nums[k] == SUM) {
-						results.add(newList(nums[i], nums[j], nums[k]));
-
-						hashSet.add(hash);
-					}
+			if (nums[i] > SUM) {
+				break;
+			}
+			if (i > 0 && nums[i] == nums[i - 1]) {
+				continue;
+			}
+			int j = i + 1, k = nums.length - 1;
+			int sum;
+			while (j < k) {
+				sum = nums[i] + nums[j] + nums[k];
+				if (sum < SUM) {
+					++j;
+					continue;
+				}
+				if (sum > SUM) {
+					--k;
+					continue;
+				}
+				//  sum == SUM
+				results.add(Arrays.asList(nums[i], nums[j++], nums[k--]));
+				while (j < k && nums[j] == nums[j - 1]) {
+					++j;
+				}
+				while (j < k && k < nums.length - 1 && nums[k] == nums[k + 1]) {
+					--k;
 				}
 			}
 		}
 		return results;
-	}
-
-	private String hash(
-			Integer x, Integer y, Integer z) {
-		return "" + x + y + z;
-	}
-
-	private List<Integer> newList(
-			Integer i, Integer j, Integer k) {
-		List<Integer> list =
-				new ArrayList<>(3);
-		list.add(i);
-		list.add(j);
-		list.add(k);
-
-		return list;
 	}
 
 }
