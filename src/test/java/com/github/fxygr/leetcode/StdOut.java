@@ -13,6 +13,10 @@ public class StdOut {
 		System.out.println();
 	}
 
+	public static void println(String s) {
+		System.out.println(s);
+	}
+
 	public static void println(int[] nums, String prefix) {
 		System.out.print(prefix + ": ");
 		if (nums == null) {
