@@ -17,7 +17,7 @@ public class StdOut {
 		System.out.println(s);
 	}
 
-	public static void println(int[] nums, String prefix) {
+	public static void println(Number[] nums, String prefix) {
 		System.out.print(prefix + ": ");
 		if (nums == null) {
 			System.out.println(nums);
@@ -36,6 +36,11 @@ public class StdOut {
 	public static void println(
 			List lists, String prefix) {
 		System.out.println(prefix + ": " + lists);
+	}
+
+	public static void println(
+			Object object, String prefix) {
+		System.out.println(prefix + ": " + object);
 	}
 
 }
