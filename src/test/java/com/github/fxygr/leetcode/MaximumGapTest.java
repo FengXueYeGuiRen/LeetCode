@@ -25,8 +25,12 @@ public class MaximumGapTest {
 
 	@Test
 	public void maximumGap() {
-		int[] nums = new int[]{3, 6, 9, 1};
+		int[] nums = new int[]{100, 3, 2, 1};
 		int maxGap = maximumGap(nums);
+		assertEquals(97, maxGap);
+
+		nums = new int[]{3, 6, 9, 1};
+		maxGap = maximumGap(nums);
 		assertEquals(3, maxGap);
 
 		nums = new int[]{};
