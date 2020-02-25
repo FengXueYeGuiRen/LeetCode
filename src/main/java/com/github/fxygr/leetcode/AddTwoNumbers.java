@@ -20,63 +20,33 @@ public class AddTwoNumbers {
 		if (l2 == null) {
 			return l1;
 		}
-		ListNode root = null;
-		ListNode currentNode = root;
+		ListNode dummyHead = new ListNode(0);
+		ListNode currentNode = dummyHead;
 
 		int carry = 0;
 
 		ListNode addend1 = l1, addend2 = l2;
 		while (addend1 != null || addend2 != null) {
+			int i1 = addend1 == null ? 0 : addend1.getVal();
+			int i2 = addend2 == null ? 0 : addend2.getVal();
 
-			Sum sum = add(addend1, addend2, carry);
-			carry = sum.getCarry();
+			int sum = i1 + i2 + carry;
+			carry = sum / 10;
 
-			if (root == null) {
-				currentNode = root = sum.getNode();
-			} else {
-				currentNode.setNext(sum.getNode());
-				currentNode = currentNode.getNext();
+			currentNode.setNext(new ListNode(sum % 10));
+			currentNode = currentNode.getNext();
+
+			if (addend1 != null) {
+				addend1 = addend1.getNext();
 			}
-
-			addend1 = (addend1 == null) ? null : addend1.getNext();
-			addend2 = (addend2 == null) ? null : addend2.getNext();
+			if (addend2 != null) {
+				addend2 = addend2.getNext();
+			}
 		}
 		if (carry != 0) {
 			currentNode.setNext(new ListNode(carry));
 		}
-		return root;
-	}
-
-	private Sum add(ListNode addend1, ListNode addend2, int carry) {
-		int i1 = addend1 == null ? 0 : addend1.getVal();
-		int i2 = addend2 == null ? 0 : addend2.getVal();
-
-		int sum = add(i1, i2, carry);
-
-		return new Sum(new ListNode(sum % 10), sum / 10);
-	}
-
-	private int add(int addend1, int addend2, int carry) {
-		return addend1 + addend2 + carry;
-	}
-
-	private class Sum {
-		private ListNode node;
-		private int carry;
-
-		public Sum(ListNode node, int carry) {
-			this.node = node;
-			this.carry = carry;
-		}
-
-		public ListNode getNode() {
-			return node;
-		}
-
-		public int getCarry() {
-			return carry;
-		}
-
+		return dummyHead.getNext();
 	}
 
 }
