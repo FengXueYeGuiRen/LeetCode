@@ -10,6 +10,8 @@ package com.github.fxygr.leetcode;
  */
 public class AddTwoNumbersII {
 
+	private static final int DIGITS = 8;
+
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		if (l1 == null && l2 == null) {
 			return null;
@@ -20,16 +22,17 @@ public class AddTwoNumbersII {
 		if (l2 == null) {
 			return l1;
 		}
-		String s1 = transfer(l1);
-		String s2 = transfer(l2);
+		String s1 = parseString(l1);
+		String s2 = parseString(l2);
 
-		Long addend1 = Long.valueOf(s1);
-		Long addend2 = Long.valueOf(s2);
+		String s = addTwoStrings(s1, s2);
 
-		Long sum = addend1 + addend2;
+		return parseListNode(s);
+	}
 
-		String s = String.valueOf(sum);
+	private ListNode parseListNode(String s) {
 		ListNode dummyHead = new ListNode(0);
+
 		ListNode currentNode = dummyHead;
 		for (int i = 0; i < s.length(); ++i) {
 			currentNode.setNext(new ListNode(Integer.parseInt(s.substring(i, i + 1))));
@@ -38,12 +41,73 @@ public class AddTwoNumbersII {
 		return dummyHead.getNext();
 	}
 
-	private String transfer(ListNode listNode) {
+	private String addTwoStrings(String s1, String s2) {
+		StringBuilder sb = new StringBuilder();
+
+		String substring1, substring2;
+
+		int addend1, addend2;
+
+		int carry = 0;
+		while (true) {
+			substring1 = substring(s1);
+			if (s1.length() >= substring1.length()) {
+				s1 = s1.substring(0, s1.length() - substring1.length());
+			}
+			substring2 = substring(s2);
+			if (s2.length() >= substring2.length()) {
+				s2 = s2.substring(0, s2.length() - substring2.length());
+			}
+			addend1 = parseInt(substring1);
+			addend2 = parseInt(substring2);
+			if (addend1 < 0 && addend2 < 0) {
+				break;
+			}
+			addend1 = addend1 < 0 ? 0 : addend1;
+			addend2 = addend2 < 0 ? 0 : addend2;
+
+			int sum = addend1 + addend2 + carry;
+
+			int maxDigits = Math.max(substring1.length(), substring2.length());
+			carry = sum / (int) Math.pow(10, maxDigits);
+
+			String s = String.format("%0" + maxDigits + "d", sum);
+			if (s.length() > maxDigits) {
+				s = s.substring(s.length() - maxDigits);
+			}
+			sb.insert(0, s);
+		}
+		if (carry > 0) {
+			sb.insert(0, carry);
+		}
+		return sb.toString();
+	}
+
+	private int parseInt(String s) {
+		if (s == null || "".equals(s.trim())) {
+			return Integer.MIN_VALUE;
+		}
+		return Integer.parseInt(s);
+	}
+
+	private String substring(String s) {
+		int beginIndex = substringBeginIndex(s);
+		return s.substring(beginIndex);
+	}
+
+	private int substringBeginIndex(String s) {
+		if (s == null) {
+			return 0;
+		}
+		return s.length() <= DIGITS ? 0 : s.length() - DIGITS;
+	}
+
+	private String parseString(ListNode listNode) {
 		StringBuilder s = new StringBuilder();
 		for (ListNode l = listNode; l != null; l = l.getNext()) {
 			s.append(l.getVal());
 		}
-		return s.toString();
+		return s.toString().trim();
 	}
 
 }

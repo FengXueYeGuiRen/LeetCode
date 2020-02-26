@@ -24,6 +24,14 @@ public class AddTwoNumbersIITest {
 
 	@Test
 	public void addTwoNumbers() {
+		addTwoNumbers(new int[]{5}, new int[]{5});
+
+		addTwoNumbers(new int[]{1, 4, 4, 3, 5, 9, 5}, new int[]{9, 4, 0, 6, 1, 7, 8, 2, 1, 1});
+
+		addTwoNumbers(new int[]{9}, new int[]{1, 9, 9, 9, 9, 9, 9, 9, 9, 9});
+
+		addTwoNumbers(new int[]{0}, new int[]{0});
+
 		addTwoNumbers(new int[]{7, 2, 4, 3}, new int[]{5, 6, 4});
 
 		addTwoNumbers(new int[]{7, 2, 4, 3}, new int[0]);
