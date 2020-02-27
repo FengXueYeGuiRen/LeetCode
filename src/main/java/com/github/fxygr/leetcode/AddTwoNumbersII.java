@@ -31,42 +31,36 @@ public class AddTwoNumbersII {
 	}
 
 	private ListNode parseListNode(String s) {
+		if (isBlank(s)) {
+			return null;
+		}
 		ListNode dummyHead = new ListNode(0);
 
 		ListNode currentNode = dummyHead;
 		for (int i = 0; i < s.length(); ++i) {
-			currentNode.setNext(new ListNode(Integer.parseInt(s.substring(i, i + 1))));
-			currentNode = currentNode.getNext();
+			currentNode.next = new ListNode(Integer.parseInt(s.substring(i, i + 1)));
+			currentNode = currentNode.next;
 		}
-		return dummyHead.getNext();
+		return dummyHead.next;
 	}
 
 	private String addTwoStrings(String s1, String s2) {
 		StringBuilder sb = new StringBuilder();
 
-		String substring1, substring2;
-
-		int addend1, addend2;
-
 		int carry = 0;
+
+		String substring1, substring2;
 		while (true) {
 			substring1 = substring(s1);
-			if (s1.length() >= substring1.length()) {
-				s1 = s1.substring(0, s1.length() - substring1.length());
-			}
+			s1 = subtractLast(s1, substring1);
+
 			substring2 = substring(s2);
-			if (s2.length() >= substring2.length()) {
-				s2 = s2.substring(0, s2.length() - substring2.length());
-			}
-			addend1 = parseInt(substring1);
-			addend2 = parseInt(substring2);
-			if (addend1 < 0 && addend2 < 0) {
+			s2 = subtractLast(s2, substring2);
+
+			if (isBlank(substring1) && isBlank(substring2)) {
 				break;
 			}
-			addend1 = addend1 < 0 ? 0 : addend1;
-			addend2 = addend2 < 0 ? 0 : addend2;
-
-			int sum = addend1 + addend2 + carry;
+			int sum = addTwoStrings(substring1, substring2, carry);
 
 			int maxDigits = Math.max(substring1.length(), substring2.length());
 			carry = sum / (int) Math.pow(10, maxDigits);
@@ -83,8 +77,23 @@ public class AddTwoNumbersII {
 		return sb.toString();
 	}
 
+	private int addTwoStrings(String s1, String s2, int carry) {
+		int addend1 = parseInt(s1);
+		int addend2 = parseInt(s2);
+		if (addend1 < 0 && addend2 < 0) {
+			return 0;
+		}
+		if (addend1 < 0) {
+			addend1 = 0;
+		}
+		if (addend2 < 0) {
+			addend2 = 0;
+		}
+		return addend1 + addend2 + carry;
+	}
+
 	private int parseInt(String s) {
-		if (s == null || "".equals(s.trim())) {
+		if (isBlank(s)) {
 			return Integer.MIN_VALUE;
 		}
 		return Integer.parseInt(s);
@@ -96,18 +105,29 @@ public class AddTwoNumbersII {
 	}
 
 	private int substringBeginIndex(String s) {
-		if (s == null) {
+		if (isBlank(s)) {
 			return 0;
 		}
 		return s.length() <= DIGITS ? 0 : s.length() - DIGITS;
 	}
 
+	private String subtractLast(String source, String substring) {
+		if (source.length() >= substring.length()) {
+			source = source.substring(0, source.length() - substring.length());
+		}
+		return source;
+	}
+
 	private String parseString(ListNode listNode) {
 		StringBuilder s = new StringBuilder();
-		for (ListNode l = listNode; l != null; l = l.getNext()) {
-			s.append(l.getVal());
+		for (ListNode l = listNode; l != null; l = l.next) {
+			s.append(l.val);
 		}
 		return s.toString().trim();
+	}
+
+	private boolean isBlank(String s) {
+		return s == null || "".equals(s.trim());
 	}
 
 }

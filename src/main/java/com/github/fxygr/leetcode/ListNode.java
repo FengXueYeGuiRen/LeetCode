@@ -7,8 +7,8 @@ package com.github.fxygr.leetcode;
  */
 public class ListNode {
 
-	private int val;
-	private ListNode next;
+	int val;
+	ListNode next;
 
 	ListNode(int x) {
 		val = x;
