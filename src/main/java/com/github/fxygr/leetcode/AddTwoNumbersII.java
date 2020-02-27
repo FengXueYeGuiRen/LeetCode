@@ -10,8 +10,6 @@ package com.github.fxygr.leetcode;
  */
 public class AddTwoNumbersII {
 
-	private static final int DIGITS = 8;
-
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		if (l1 == null && l2 == null) {
 			return null;
@@ -25,109 +23,60 @@ public class AddTwoNumbersII {
 		String s1 = parseString(l1);
 		String s2 = parseString(l2);
 
-		String s = addTwoStrings(s1, s2);
+		int[] sum = addStrings(s1, s2);
 
-		return parseListNode(s);
+		return parseListNode(sum);
 	}
 
-	private ListNode parseListNode(String s) {
-		if (isBlank(s)) {
-			return null;
-		}
+	private ListNode parseListNode(int[] nums) {
 		ListNode dummyHead = new ListNode(0);
 
 		ListNode currentNode = dummyHead;
-		for (int i = 0; i < s.length(); ++i) {
-			currentNode.next = new ListNode(Integer.parseInt(s.substring(i, i + 1)));
+		int i = nums.length - 1;
+		if (nums[i] < 1) {
+			--i;
+		}
+		for (; i >= 0; --i) {
+			currentNode.next = new ListNode(nums[i]);
 			currentNode = currentNode.next;
 		}
 		return dummyHead.next;
 	}
 
-	private String addTwoStrings(String s1, String s2) {
-		StringBuilder sb = new StringBuilder();
+	private int[] addStrings(String num1, String num2) {
+		int maxDigits = Math.max(num1.length(), num2.length());
+		int[] sums = new int[maxDigits + 1];
 
-		int carry = 0;
+		int num1Index = num1.length() - 1;
+		int num2Index = num2.length() - 1;
 
-		String substring1, substring2;
-		while (true) {
-			substring1 = substring(s1);
-			s1 = subtractLast(s1, substring1);
+		int carry = 0, i = 0;
 
-			substring2 = substring(s2);
-			s2 = subtractLast(s2, substring2);
+		int addend1, addend2;
+		for (; i <= maxDigits; ++i) {
+			addend1 = num1Index < 0 ? 0 : Character.getNumericValue(num1.charAt(num1Index--));
+			addend2 = num2Index < 0 ? 0 : Character.getNumericValue(num2.charAt(num2Index--));
 
-			if (isBlank(substring1) && isBlank(substring2)) {
-				break;
-			}
-			int sum = addTwoStrings(substring1, substring2, carry);
+			int sum = addend1 + addend2 + carry;
+			carry = sum / 10;
 
-			int maxDigits = Math.max(substring1.length(), substring2.length());
-			carry = sum / (int) Math.pow(10, maxDigits);
-
-			String s = String.format("%0" + maxDigits + "d", sum);
-			if (s.length() > maxDigits) {
-				s = s.substring(s.length() - maxDigits);
-			}
-			sb.insert(0, s);
+			sums[i] = sum % 10;
 		}
 		if (carry > 0) {
-			sb.insert(0, carry);
+			sums[i] = carry;
 		}
-		return sb.toString();
-	}
-
-	private int addTwoStrings(String s1, String s2, int carry) {
-		int addend1 = parseInt(s1);
-		int addend2 = parseInt(s2);
-		if (addend1 < 0 && addend2 < 0) {
-			return 0;
-		}
-		if (addend1 < 0) {
-			addend1 = 0;
-		}
-		if (addend2 < 0) {
-			addend2 = 0;
-		}
-		return addend1 + addend2 + carry;
-	}
-
-	private int parseInt(String s) {
-		if (isBlank(s)) {
-			return Integer.MIN_VALUE;
-		}
-		return Integer.parseInt(s);
-	}
-
-	private String substring(String s) {
-		int beginIndex = substringBeginIndex(s);
-		return s.substring(beginIndex);
-	}
-
-	private int substringBeginIndex(String s) {
-		if (isBlank(s)) {
-			return 0;
-		}
-		return s.length() <= DIGITS ? 0 : s.length() - DIGITS;
-	}
-
-	private String subtractLast(String source, String substring) {
-		if (source.length() >= substring.length()) {
-			source = source.substring(0, source.length() - substring.length());
-		}
-		return source;
+		return sums;
 	}
 
 	private String parseString(ListNode listNode) {
+		if (listNode == null) {
+			return "";
+		}
 		StringBuilder s = new StringBuilder();
 		for (ListNode l = listNode; l != null; l = l.next) {
 			s.append(l.val);
 		}
 		return s.toString().trim();
-	}
-
-	private boolean isBlank(String s) {
-		return s == null || "".equals(s.trim());
 	}
 
 }
