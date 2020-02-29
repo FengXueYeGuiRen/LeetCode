@@ -50,7 +50,6 @@ public class AddStrings {
 		StringBuilder sb = new StringBuilder();
 		int i = nums.length - 1;
 		if (nums[i] < 1) {
-			sb.reverse();
 			--i;
 		}
 		for (; i >= 0; --i) {
