@@ -17,47 +17,28 @@ public class AddBinary {
 		if (isBlank(b)) {
 			return a;
 		}
-		int maxLength = Math.max(a.length(), b.length());
-		short[] chars = new short[maxLength + 1];
+		StringBuilder sb = new StringBuilder();
 
+		short aShort, bShort, carry = '0', sum;
 		int aIndex = a.length() - 1, bIndex = b.length() - 1;
-		short aShort, bShort, carry = '0';
-		short[] sums;
-		for (int i = 0; i <= maxLength; ++i) {
+		while (aIndex >= 0 || bIndex >= 0) {
 			aShort = (short) (aIndex < 0 ? '0' : a.charAt(aIndex--));
 			bShort = (short) (bIndex < 0 ? '0' : b.charAt(bIndex--));
 
-			sums = add(aShort, bShort, carry);
-			carry = sums[0];
+			sum = (short) (aShort ^ bShort ^ carry);
 
-			chars[i] = sums[1];
+			carry = (short) ((aShort & bShort) | ((aShort ^ bShort) & carry));
+
+			sb.append((char) sum);
 		}
-		return parseString(chars);
+		if (carry != (short) '0') {
+			sb.append((char) carry);
+		}
+		return sb.reverse().toString();
 	}
 
 	private boolean isBlank(String s) {
 		return s == null || "".equals(s.trim());
-	}
-
-	private String parseString(short[] nums) {
-		StringBuilder sb = new StringBuilder();
-		int i = nums.length - 1;
-		if (nums[i] == '0') {
-			--i;
-		}
-		for (; i >= 0; --i) {
-			sb.append((char) nums[i]);
-		}
-		return sb.toString();
-	}
-
-	private short[] add(short ch1, short ch2, short carry) {
-		short[] chars = new short[]{(short) (ch1 & ch2), (short) (ch1 ^ ch2)};
-
-		chars[0] |= (short) (chars[1] & carry);
-		chars[1] ^= carry;
-
-		return chars;
 	}
 
 }
