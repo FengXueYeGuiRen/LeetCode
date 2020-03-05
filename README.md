@@ -1,18 +1,5 @@
 ###### LeetCode(力扣)
 
-Category|分类
----|---
-[Algorithms](https://leetcode.com/problemset/algorithms/)|[算法](https://leetcode-cn.com/problemset/algorithms/)
-[Database](https://leetcode.com/problemset/database/)|[数据库](https://leetcode-cn.com/problemset/database/)
-[Shell](https://leetcode.com/problemset/shell/)|[Shell](https://leetcode-cn.com/problemset/shell/)
-[Concurrency](https://leetcode.com/problemset/concurrency/)|[多线程](https://leetcode-cn.com/problemset/concurrency/)
-
-Difficulty|难度
----|---
-[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)|[简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95)
-[Medium](https://leetcode.com/problemset/all/?difficulty=Medium)|[中等](https://leetcode-cn.com/problemset/all/?difficulty=%E4%B8%AD%E7%AD%89)
-[Hard](https://leetcode.com/problemset/all/?difficulty=Hard)|[困难](https://leetcode-cn.com/problemset/all/?difficulty=%E5%9B%B0%E9%9A%BE)
-
 Tags|标签
 ---|---
 [Array](https://leetcode.com/problemset/all/?topicSlugs=array)|[数组](https://leetcode-cn.com/problemset/all/?topicSlugs=array)
@@ -26,7 +13,12 @@ Tags|标签
 [Tree](https://leetcode.com/problemset/all/?topicSlugs=tree)|[树](https://leetcode-cn.com/problemset/all/?topicSlugs=tree)
 [Two Pointers](https://leetcode.com/problemset/all/?topicSlugs=two-pointers)|[双指针](https://leetcode-cn.com/problemset/all/?topicSlugs=two-pointers)
 
-
+Category|分类
+---|---
+[Algorithms](https://leetcode.com/problemset/algorithms/)|[算法](https://leetcode-cn.com/problemset/algorithms/)
+[Database](https://leetcode.com/problemset/database/)|[数据库](https://leetcode-cn.com/problemset/database/)
+[Shell](https://leetcode.com/problemset/shell/)|[Shell](https://leetcode-cn.com/problemset/shell/)
+[Concurrency](https://leetcode.com/problemset/concurrency/)|[多线程](https://leetcode-cn.com/problemset/concurrency/)
 
 \#|Title(题名)|Difficulty(难度)|Tags(标签)|Category(分类)|Solution
 ---|---|---|---|---|---
@@ -45,6 +37,11 @@ Tags|标签
 1|[Two Sum](https://leetcode.com/problems/two-sum/)([两数之和](https://leetcode-cn.com/problems/two-sum/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[Array](https://leetcode.com/tag/array)([数组](https://leetcode-cn.com/tag/array)) [Hash Table](https://leetcode.com/tag/hash-table)([哈希表](https://leetcode-cn.com/tag/hash-table))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/TowSumTest.java)
 
 
+Difficulty|难度
+---|---
+[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)|[简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95)
+[Medium](https://leetcode.com/problemset/all/?difficulty=Medium)|[中等](https://leetcode-cn.com/problemset/all/?difficulty=%E4%B8%AD%E7%AD%89)
+[Hard](https://leetcode.com/problemset/all/?difficulty=Hard)|[困难](https://leetcode-cn.com/problemset/all/?difficulty=%E5%9B%B0%E9%9A%BE)
 
 
 
