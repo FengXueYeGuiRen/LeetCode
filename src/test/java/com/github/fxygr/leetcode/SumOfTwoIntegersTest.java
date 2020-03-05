@@ -25,8 +25,13 @@ public class SumOfTwoIntegersTest {
 
 	@Test
 	public void getSum() {
-		int a = 1, b = 2;
+		int a = -12, b = -8;
 		int sum = getSum(a, b);
+		assertEquals(-20, sum);
+
+		a = 1;
+		b = 2;
+		sum = getSum(a, b);
 		assertEquals(3, sum);
 
 		a = -2;
@@ -38,6 +43,16 @@ public class SumOfTwoIntegersTest {
 		b = 0;
 		sum = getSum(a, b);
 		assertEquals(0, sum);
+
+		a = Integer.MIN_VALUE;
+		b = Integer.MAX_VALUE;
+		sum = getSum(a, b);
+		assertEquals(-1, sum);
+
+		a = Integer.MAX_VALUE;
+		b = Integer.MIN_VALUE;
+		sum = getSum(a, b);
+		assertEquals(-1, sum);
 	}
 
 	public int getSum(int a, int b) {

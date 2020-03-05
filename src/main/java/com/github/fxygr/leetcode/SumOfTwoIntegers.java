@@ -17,26 +17,17 @@ public class SumOfTwoIntegers {
 		if (b == 0) {
 			return a;
 		}
-		String as = Integer.toBinaryString(a);
-		String bs = Integer.toBinaryString(b);
+		int result = a ^ b;
 
-		String sum = new AddBinary().addBinary(as, bs);
+		int pre, carry = a & b;
+		while (carry != 0) {
+			pre = result;
+			carry <<= 1;
 
-		return parseInt(sum);
-	}
-
-	private int parseInt(String binary) {
-		int integer = 0;
-		int length = binary.length();
-
-		int least = length >= Integer.SIZE ? 0 : -1;
-		for (int i = length - 1; i > least; --i) {
-			integer += Short.parseShort(String.valueOf(binary.charAt(i))) * Math.pow(2, length - 1 - i);
+			result ^= carry;
+			carry &= pre;
 		}
-		if (length >= Integer.SIZE && binary.charAt(length - Integer.SIZE) == '1') {
-			integer = -integer;
-		}
-		return integer;
+		return result;
 	}
 
 }
