@@ -44,6 +44,7 @@ public class MaxQueue {
 		if (val == maxVal) {
 			if (head == null) {
 				maxVal = -1;
+				tail = null;
 				return val;
 			}
 			maxVal = head.val;
