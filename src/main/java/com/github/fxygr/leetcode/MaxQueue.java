@@ -9,7 +9,7 @@ package com.github.fxygr.leetcode;
 public class MaxQueue {
 
 	private int maxVal = -1;
-	private ListNode head;
+	private ListNode head = null;
 	private ListNode tail = head;
 
 	public MaxQueue() {
@@ -29,30 +29,42 @@ public class MaxQueue {
 		tail.next = node;
 		tail = node;
 
-		if (value > maxVal) {
-			maxVal = value;
-		}
+		updateMaxVal(value);
 	}
 
 	public int pop_front() {
 		if (head == null) {
 			return -1;
 		}
-		int val = head.val;
-		head = head.next;
+		int popingVal = head.val;
 
-		if (val == maxVal) {
-			if (head == null) {
-				maxVal = -1;
-				tail = null;
-				return val;
-			}
-			maxVal = head.val;
-			for (ListNode node = head.next; node != null; node = node.next) {
-				maxVal = Math.max(node.val, maxVal);
-			}
+		head = head.next;
+		if (head == null) {
+			tail = null;
+			maxVal = -1;
+			return popingVal;
 		}
-		return val;
+		if (popingVal == maxVal) {
+			updateMaxVal();
+		}
+		return popingVal;
+	}
+
+	private void updateMaxVal() {
+		if (head == null) {
+			maxVal = -1;
+			return;
+		}
+		maxVal = head.val;
+		for (ListNode node = head.next; node != null; node = node.next) {
+			maxVal = Math.max(node.val, maxVal);
+		}
+	}
+
+	private void updateMaxVal(int value) {
+		if (value > maxVal) {
+			maxVal = value;
+		}
 	}
 
 }
