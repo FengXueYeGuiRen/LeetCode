@@ -27,8 +27,12 @@ public class BestTimeToBuyAndSellStockTest {
 
 	@Test
 	public void maxProfit() {
-		int[] prices = {7, 1, 5, 3, 6, 4};
+		int[] prices = {2, 4, 1};
 		int profit = maxProfit(prices);
+		assertEquals(2, profit);
+
+		prices = new int[]{7, 1, 5, 3, 6, 4};
+		profit = maxProfit(prices);
 		assertEquals(5, profit);
 
 		prices = new int[]{7, 6, 4, 3, 1};
