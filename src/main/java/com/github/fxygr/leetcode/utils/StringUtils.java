@@ -7,11 +7,11 @@ package com.github.fxygr.leetcode.utils;
  */
 public class StringUtils {
 
-	private boolean isNotBlank(String s) {
+	public static boolean isNotBlank(String s) {
 		return !isBlank(s);
 	}
 
-	private boolean isBlank(String s) {
+	public static boolean isBlank(String s) {
 		return s == null || "".equals(s.trim());
 	}
 
