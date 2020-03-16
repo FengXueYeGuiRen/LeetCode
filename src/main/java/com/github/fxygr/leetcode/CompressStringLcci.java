@@ -20,16 +20,19 @@ public class CompressStringLcci {
 		short count = 1;
 		int i = 1;
 		for (; i < s.length(); ++i) {
-			if (s.charAt(i) == s.charAt(i - 1)) {
-				++count;
-				sb.append(s.charAt(i));
+			if (s.charAt(i) != s.charAt(i - 1)) {
+				count = 1;
+				sb.append(count);
 
 				continue;
 			}
-			count = 1;
-			sb.append(count);
+			++count;
+			if (count == 1) {
+				sb.append(s.charAt(i));
+			}
+			continue;
 		}
-		sb.append(i - 1).append(count);
+		sb.append(count);
 		return sb.length() < s.length() ? sb.toString() : s;
 	}
 
