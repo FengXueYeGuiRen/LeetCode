@@ -37,6 +37,16 @@ public class GreatestCommonDivisorOfStrings {
 			if (j < gcdOfStrings.length()) {
 				return gcdOfStrings.substring(0, j);
 			}
+			if (gcdOfStrings.equals(greater.substring(i))) {
+				return gcdOfStrings;
+			}
+			if (gcdOfStrings.length() > (greater.length() - i)) {
+				//  exch
+				String gcd = gcdOfStrings;
+				gcdOfStrings = greater.substring(i);
+				greater = gcd;
+				i = 0;
+			}
 		}
 		return gcdOfStrings;
 	}

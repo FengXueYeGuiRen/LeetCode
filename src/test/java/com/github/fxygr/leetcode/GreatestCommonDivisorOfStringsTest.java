@@ -8,7 +8,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
- * description
+ * 1071. Greatest Common Divisor of Strings
+ * 1071. 字符串的最大公因子
  *
  * @author FXYGR @date 2020-03-12
  */
@@ -24,9 +25,14 @@ public class GreatestCommonDivisorOfStringsTest {
 
 	@Test
 	public void gcdOfStrings() {
-		String str1 = "ABCABC";
-		String str2 = "ABC";
+		String str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX";
+		String str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX";
 		String gcdOfStrings = gcdOfStrings(str1, str2);
+		assertEquals("TAUXX", gcdOfStrings);
+
+		str1 = "ABCABC";
+		str2 = "ABC";
+		gcdOfStrings = gcdOfStrings(str1, str2);
 		assertEquals("ABC", gcdOfStrings);
 
 		str1 = "ABABAB";
