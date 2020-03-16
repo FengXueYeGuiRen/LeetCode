@@ -39,6 +39,7 @@ public class CompressStringLcciTest {
 		String compressStr = compressStringLcci.compressString(s);
 
 		System.out.println("Output: " + compressStr);
+		System.out.println();
 		return compressStr;
 	}
 

@@ -15,22 +15,19 @@ public class CompressStringLcci {
 			return s;
 		}
 		StringBuilder sb = new StringBuilder();
-		sb.append(s.charAt(0));
 
 		short count = 1;
-		int i = 1;
+		int i = 0;
+		sb.append(s.charAt(i++));
 		for (; i < s.length(); ++i) {
-			if (s.charAt(i) != s.charAt(i - 1)) {
-				count = 1;
-				sb.append(count);
-
+			if (s.charAt(i) == s.charAt(i - 1)) {
+				++count;
 				continue;
 			}
-			++count;
-			if (count == 1) {
-				sb.append(s.charAt(i));
-			}
-			continue;
+			//  s.charAt(i) != s.charAt(i - 1)
+			sb.append(count);
+			count = 1;
+			sb.append(s.charAt(i));
 		}
 		sb.append(count);
 		return sb.length() < s.length() ? sb.toString() : s;
