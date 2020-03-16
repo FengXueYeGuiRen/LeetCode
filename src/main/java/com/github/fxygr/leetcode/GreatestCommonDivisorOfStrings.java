@@ -21,34 +21,29 @@ public class GreatestCommonDivisorOfStrings {
 		if (str1.equals(str2)) {
 			return str1;
 		}
-		String gcdOfStrings = str1;
-		String greater = str2;
-		if (str1.length() > str2.length()) {
-			gcdOfStrings = str2;
-			greater = str1;
-		}
-		for (int i = 0; i < greater.length(); ) {
-			int j = 0;
-			while (j < gcdOfStrings.length() && i < greater.length()) {
-				if (gcdOfStrings.charAt(j++) != greater.charAt(i++)) {
-					return "";
-				}
+		String gcdOfStrings;
+		int cd = Math.min(str1.length(), str2.length());
+		for (; cd > 0; --cd) {
+			if (str1.length() % cd != 0 || str2.length() % cd != 0) {
+				continue;
 			}
-			if (j < gcdOfStrings.length()) {
-				return gcdOfStrings.substring(0, j);
-			}
-			if (gcdOfStrings.equals(greater.substring(i))) {
+			//  common divisor
+			gcdOfStrings = str1.substring(0, cd);
+
+			if (isGcdOfStrings(str1, gcdOfStrings)
+					&& isGcdOfStrings(str2, gcdOfStrings)) {
 				return gcdOfStrings;
 			}
-			if (gcdOfStrings.length() > (greater.length() - i)) {
-				//  exch
-				String gcd = gcdOfStrings;
-				gcdOfStrings = greater.substring(i);
-				greater = gcd;
-				i = 0;
-			}
 		}
-		return gcdOfStrings;
+		return "";
+	}
+
+	private boolean isGcdOfStrings(String str, String gcdOfStrings) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length() / gcdOfStrings.length(); ++i) {
+			sb.append(gcdOfStrings);
+		}
+		return sb.toString().equals(str);
 	}
 
 }
