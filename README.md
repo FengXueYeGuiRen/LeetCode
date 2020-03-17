@@ -14,15 +14,10 @@ Tags|标签
 [Tree](https://leetcode.com/problemset/all/?topicSlugs=tree)|[树](https://leetcode-cn.com/problemset/all/?topicSlugs=tree)
 [Two Pointers](https://leetcode.com/problemset/all/?topicSlugs=two-pointers)|[双指针](https://leetcode-cn.com/problemset/all/?topicSlugs=two-pointers)
 
-Category|分类
----|---
-[Algorithms](https://leetcode.com/problemset/algorithms/)|[算法](https://leetcode-cn.com/problemset/algorithms/)
-[Database](https://leetcode.com/problemset/database/)|[数据库](https://leetcode-cn.com/problemset/database/)
-[Shell](https://leetcode.com/problemset/shell/)|[Shell](https://leetcode-cn.com/problemset/shell/)
-[Concurrency](https://leetcode.com/problemset/concurrency/)|[多线程](https://leetcode-cn.com/problemset/concurrency/)
 
 \#|Title(题名)|Difficulty(难度)|Tags(标签)|Category(分类)|Solution
 ---|---|---|---|---|---
+1160|[Find Words That Can Be Formed by Characters](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/)([1160. 拼写单词](https://leetcode-cn.com/problems/find-words-that-can-be-formed-by-characters/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[Array](https://leetcode.com/tag/array)([数组](https://leetcode-cn.com/tag/array)) [Hash Table](https://leetcode.com/tag/hash-table)([哈希表](https://leetcode-cn.com/tag/hash-table))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/FindWordsThatCanBeFormedByCharactersTest.java)
 1103|[Distribute Candies to People](https://leetcode.com/problems/distribute-candies-to-people/)([分糖果 II](https://leetcode-cn.com/problems/distribute-candies-to-people/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[Math](https://leetcode.com/tag/math)([数学](https://leetcode-cn.com/tag/math))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/DistributeCandiesToPeopleTest.java)
 1071|[Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/)([字符串的最大公因子](https://leetcode-cn.com/problems/greatest-common-divisor-of-strings/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[String](https://leetcode.com/tag/string)([字符串](https://leetcode-cn.com/tag/string))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/GreatestCommonDivisorOfStringsTest.java)
 653|[Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)([两数之和 IV - 输入 BST](https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[Tree](https://leetcode.com/tag/tree)([树](https://leetcode-cn.com/tag/tree))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/TwoSumIITest.java)
@@ -49,6 +44,12 @@ Difficulty|难度
 [Medium](https://leetcode.com/problemset/all/?difficulty=Medium)|[中等](https://leetcode-cn.com/problemset/all/?difficulty=%E4%B8%AD%E7%AD%89)
 [Hard](https://leetcode.com/problemset/all/?difficulty=Hard)|[困难](https://leetcode-cn.com/problemset/all/?difficulty=%E5%9B%B0%E9%9A%BE)
 
+Category|分类
+---|---
+[Algorithms](https://leetcode.com/problemset/algorithms/)|[算法](https://leetcode-cn.com/problemset/algorithms/)
+[Database](https://leetcode.com/problemset/database/)|[数据库](https://leetcode-cn.com/problemset/database/)
+[Shell](https://leetcode.com/problemset/shell/)|[Shell](https://leetcode-cn.com/problemset/shell/)
+[Concurrency](https://leetcode.com/problemset/concurrency/)|[多线程](https://leetcode-cn.com/problemset/concurrency/)
 
 
 
