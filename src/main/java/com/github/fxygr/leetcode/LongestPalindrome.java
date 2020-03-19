@@ -33,18 +33,20 @@ public class LongestPalindrome {
 				++currentCharCount;
 				continue;
 			}
-			if (currentCharCount % 2 == 0) {
-				longestPalindrome += currentCharCount;
-			} else if (currentCharCount > longestOdd) {
+			if (currentCharCount % 2 != 0 && currentCharCount > longestOdd) {
+				longestPalindrome += (longestOdd / 2) * 2;
 				longestOdd = currentCharCount;
+			} else {
+				longestPalindrome += (currentCharCount / 2) * 2;
 			}
 			currentChar = chars[i];
 			currentCharCount = 1;
 		}
-		if (currentCharCount % 2 == 0) {
-			longestPalindrome += currentCharCount;
-		} else if (currentCharCount > longestOdd) {
+		if (currentCharCount % 2 != 0 && currentCharCount > longestOdd) {
+			longestPalindrome += (longestOdd / 2) * 2;
 			longestOdd = currentCharCount;
+		} else {
+			longestPalindrome += (currentCharCount / 2) * 2;
 		}
 		return longestPalindrome + (longestOdd >= 1 ? longestOdd : 0);
 	}
