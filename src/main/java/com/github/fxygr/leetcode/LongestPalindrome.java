@@ -21,8 +21,7 @@ public class LongestPalindrome {
 		if (s.length() == 1) {
 			return 1;
 		}
-		int longestPalindrome = 0;
-		boolean hasOdd = false;
+		int nonPalindromeCharCount = 0;
 
 		char[] chars = s.toCharArray();
 		Arrays.sort(chars);
@@ -34,13 +33,12 @@ public class LongestPalindrome {
 				continue;
 			}
 			//  chars[i] != chars[i - 1]
-			longestPalindrome += (currentCharCount / 2) * 2;
-			if (!hasOdd && currentCharCount % 2 != 0) {
-				hasOdd = true;
+			if (currentCharCount % 2 != 0) {
+				nonPalindromeCharCount += (currentCharCount % 2);
 			}
 			currentCharCount = 1;
 		}
-		return longestPalindrome + (hasOdd ? 1 : 0);
+		return s.length() - (nonPalindromeCharCount >= 1 ? (nonPalindromeCharCount - 1) : 0);
 	}
 
 }
