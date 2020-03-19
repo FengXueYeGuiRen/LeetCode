@@ -22,33 +22,25 @@ public class LongestPalindrome {
 			return 1;
 		}
 		int longestPalindrome = 0;
-		int longestOdd = 0;
+		boolean hasOdd = false;
+
 		char[] chars = s.toCharArray();
 		Arrays.sort(chars);
 
-		char currentChar = chars[0];
 		int currentCharCount = 1;
-		for (int i = 1; i < s.length(); ++i) {
-			if (chars[i] == currentChar) {
+		for (int i = 1; i <= s.length(); ++i) {
+			if (i < s.length() && chars[i] == chars[i - 1]) {
 				++currentCharCount;
 				continue;
 			}
-			if (currentCharCount % 2 != 0 && currentCharCount > longestOdd) {
-				longestPalindrome += (longestOdd / 2) * 2;
-				longestOdd = currentCharCount;
-			} else {
-				longestPalindrome += (currentCharCount / 2) * 2;
+			//  chars[i] != chars[i - 1]
+			longestPalindrome += (currentCharCount / 2) * 2;
+			if (!hasOdd && currentCharCount % 2 != 0) {
+				hasOdd = true;
 			}
-			currentChar = chars[i];
 			currentCharCount = 1;
 		}
-		if (currentCharCount % 2 != 0 && currentCharCount > longestOdd) {
-			longestPalindrome += (longestOdd / 2) * 2;
-			longestOdd = currentCharCount;
-		} else {
-			longestPalindrome += (currentCharCount / 2) * 2;
-		}
-		return longestPalindrome + (longestOdd >= 1 ? longestOdd : 0);
+		return longestPalindrome + (hasOdd ? 1 : 0);
 	}
 
 }
