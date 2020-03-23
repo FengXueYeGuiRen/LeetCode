@@ -14,16 +14,12 @@ public class MiddleOfTheLinkedList {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		int length = 0;
-		for (ListNode node = head; node != null; node = node.next) {
-			++length;
+		ListNode slow = head, fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
 		}
-
-		ListNode middleNode = head;
-		for (int i = 1; i <= (length / 2); ++i) {
-			middleNode = middleNode.next;
-		}
-		return middleNode;
+		return slow;
 	}
 
 }
