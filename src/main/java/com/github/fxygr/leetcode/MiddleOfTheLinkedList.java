@@ -18,10 +18,9 @@ public class MiddleOfTheLinkedList {
 		for (ListNode node = head; node != null; node = node.next) {
 			++length;
 		}
-		int middle = (length / 2) + 1;
 
 		ListNode middleNode = head;
-		for (int i = 1; i < middle; ++i) {
+		for (int i = 1; i <= (length / 2); ++i) {
 			middleNode = middleNode.next;
 		}
 		return middleNode;

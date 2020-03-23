@@ -42,7 +42,7 @@ public class MiddleOfTheLinkedListTest {
 		ListNode head = ListNode.build(nums);
 		ListNode middleNode = middleOfTheLinkedList.middleNode(head);
 
-		System.out.println("Output: " + middleNode == null ? null : middleNode.val);
+		System.out.println("Output: " + (middleNode == null ? null : middleNode.val));
 		System.out.println();
 		return middleNode;
 	}
