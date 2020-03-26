@@ -26,11 +26,27 @@ public class TheMasseuseLcciTest {
 
 	@Test
 	public void massage() {
-		int[] nums = {1, 2, 3, 1};
+		int[] nums = new int[]{0, 0, 0};
 		int times = massage(nums);
+		assertEquals(0, times);
+
+		nums = new int[]{0, 0};
+		times = massage(nums);
+		assertEquals(0, times);
+
+		nums = new int[]{1, 2, 3, 1};
+		times = massage(nums);
 		assertEquals(4, times);
 
 		nums = new int[]{2, 7, 9, 3, 1};
+		times = massage(nums);
+		assertEquals(12, times);
+
+		nums = new int[]{2, 1, 4, 5, 3, 1, 1, 3};
+		times = massage(nums);
+		assertEquals(12, times);
+
+		nums = new int[]{2, 1, 4, 5, 3, 1, 1, 1, 3};
 		times = massage(nums);
 		assertEquals(12, times);
 	}
