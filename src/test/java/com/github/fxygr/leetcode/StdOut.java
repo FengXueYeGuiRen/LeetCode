@@ -1,5 +1,7 @@
 package com.github.fxygr.leetcode;
 
+import com.github.fxygr.leetcode.utils.StringUtils;
+
 import java.util.List;
 
 /**
@@ -18,7 +20,9 @@ public class StdOut {
 	}
 
 	public static void println(int[] nums, String prefix) {
-		System.out.print(prefix + ": ");
+		if (StringUtils.isNotBlank(prefix)) {
+			System.out.print(prefix + ": ");
+		}
 		if (nums == null) {
 			System.out.println(nums);
 			return;
@@ -29,6 +33,24 @@ public class StdOut {
 				System.out.print(", ");
 			}
 			System.out.print(nums[i]);
+		}
+		System.out.print("]");
+	}
+
+	public static void println(int[][] nums, String prefix) {
+		if (StringUtils.isNotBlank(prefix)) {
+			System.out.print(prefix + ": ");
+		}
+		if (nums == null) {
+			System.out.println(nums);
+			return;
+		}
+		System.out.print("[");
+		for (int i = 0; i < nums.length; ++i) {
+			if (i != 0) {
+				System.out.print(", ");
+			}
+			println(nums[i], "");
 		}
 		System.out.println("]");
 	}

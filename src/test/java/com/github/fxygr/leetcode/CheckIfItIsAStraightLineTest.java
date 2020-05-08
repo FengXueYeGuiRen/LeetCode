@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
-import java.util.Arrays;
-
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -30,10 +29,14 @@ public class CheckIfItIsAStraightLineTest {
 		int[][] coordinates = {{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}};
 		boolean isStraightLine = checkStraightLine(coordinates);
 		assertTrue(isStraightLine);
+
+		coordinates = new int[][]{{1, 1}, {2, 2}, {3, 4}, {4, 5}, {5, 6}, {7, 7}};
+		isStraightLine = checkStraightLine(coordinates);
+		assertFalse(isStraightLine);
 	}
 
 	private boolean checkStraightLine(int[][] coordinates) {
-		System.out.println("Input: " + Arrays.toString(coordinates));
+		StdOut.println(coordinates, "Input: ");
 
 		boolean isStraightLine = checkIfItIsAStraightLine.checkStraightLine(coordinates);
 
