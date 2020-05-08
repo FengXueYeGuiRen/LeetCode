@@ -26,8 +26,12 @@ public class CheckIfItIsAStraightLineTest {
 
 	@Test
 	public void checkStraightLine() {
-		int[][] coordinates = {{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}};
+		int[][] coordinates = new int[][]{{-3, -2}, {-1, -2}, {2, -2}, {-2, -2}, {0, -2}};
 		boolean isStraightLine = checkStraightLine(coordinates);
+		assertTrue(isStraightLine);
+
+		coordinates = new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}};
+		isStraightLine = checkStraightLine(coordinates);
 		assertTrue(isStraightLine);
 
 		coordinates = new int[][]{{1, 1}, {2, 2}, {3, 4}, {4, 5}, {5, 6}, {7, 7}};

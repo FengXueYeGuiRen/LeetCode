@@ -14,9 +14,16 @@ public class CheckIfItIsAStraightLine {
 			return false;
 		}
 		int i = 0;
-		double slope = ((double) (coordinates[i][1])) - coordinates[i++][0];
-		for (; i < coordinates.length; ++i) {
-			double currentSlope = ((double) (coordinates[i][1])) - coordinates[i][0];
+		double lastY = (double) (coordinates[coordinates.length - 1][1]);
+		int lastX = coordinates[coordinates.length - 1][0];
+
+		double slope = (lastY - coordinates[i][1]) / (lastX - coordinates[i++][0]);
+		slope = Math.abs(slope);
+
+		for (; i < coordinates.length - 1; ++i) {
+			double currentSlope = (lastY - coordinates[i][1]) / (lastX - coordinates[i][0]);
+			currentSlope = Math.abs(currentSlope);
+
 			if (Double.compare(currentSlope, slope) != 0) {
 				return false;
 			}
