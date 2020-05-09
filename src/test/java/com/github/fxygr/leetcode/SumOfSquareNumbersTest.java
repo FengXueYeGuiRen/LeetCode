@@ -26,8 +26,16 @@ public class SumOfSquareNumbersTest {
 
 	@Test
 	public void judgeSquareSum() {
-		int c = 5;
+		int c = 0;
 		boolean isSquareSum = judgeSquareSum(c);
+		assertTrue(isSquareSum);
+
+		c = 4;
+		isSquareSum = judgeSquareSum(c);
+		assertTrue(isSquareSum);
+
+		c = 5;
+		isSquareSum = judgeSquareSum(c);
 		assertTrue(isSquareSum);
 
 		c = 3;

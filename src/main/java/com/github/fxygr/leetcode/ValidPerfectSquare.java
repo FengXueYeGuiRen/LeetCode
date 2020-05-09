@@ -13,7 +13,7 @@ public class ValidPerfectSquare {
 		if (num < 1) {
 			return false;
 		}
-		if (num == 1 || num == 2 || num == 4) {
+		if (num == 1 || num == 4) {
 			return true;
 		}
 		for (int i = num / 3; i > 0; --i) {

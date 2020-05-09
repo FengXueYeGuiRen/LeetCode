@@ -12,8 +12,14 @@ public class SumOfSquareNumbers {
 	private ValidPerfectSquare validPerfectSquare = new ValidPerfectSquare();
 
 	public boolean judgeSquareSum(int c) {
+		if (c < 0) {
+			return false;
+		}
+		if (c == 0) {
+			return true;
+		}
 		int aa = c / 2;
-		for (int i = 1; i < aa; ++i) {
+		for (int i = 0; i <= aa; ++i) {
 			int a = i * i;
 			int bSquare = c - a;
 			boolean isBPerfectSquare = validPerfectSquare.isPerfectSquare(bSquare);
