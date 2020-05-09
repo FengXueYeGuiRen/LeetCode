@@ -13,15 +13,15 @@ public class ValidPerfectSquare {
 		if (num < 1) {
 			return false;
 		}
-		if (num == 1) {
+		if (num == 1 || num == 2 || num == 4) {
 			return true;
 		}
-		for (int n = num; n > 1; n /= 2) {
-			if (n % 2 != 0) {
-				return false;
+		for (int i = num / 3; i > 0; --i) {
+			if (i * i == num) {
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 }

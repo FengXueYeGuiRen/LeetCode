@@ -26,8 +26,16 @@ public class ValidPerfectSquareTest {
 
 	@Test
 	public void isPerfectSquare() {
-		int num = 1;
+		int num = 4;
 		boolean isPerfectSquare = isPerfectSquare(num);
+		assertTrue(isPerfectSquare);
+
+		num = 9;
+		isPerfectSquare = isPerfectSquare(num);
+		assertTrue(isPerfectSquare);
+
+		num = 1;
+		isPerfectSquare = isPerfectSquare(num);
 		assertTrue(isPerfectSquare);
 
 		num = 16;
