@@ -10,8 +10,11 @@ package com.github.fxygr.leetcode;
 public class ValidPerfectSquare {
 
 	public boolean isPerfectSquare(int num) {
-		if (num < 2) {
+		if (num < 1) {
 			return false;
+		}
+		if (num == 1) {
+			return true;
 		}
 		for (int n = num; n > 1; n /= 2) {
 			if (n % 2 != 0) {
