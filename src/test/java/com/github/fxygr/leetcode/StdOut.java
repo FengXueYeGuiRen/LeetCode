@@ -34,7 +34,7 @@ public class StdOut {
 			}
 			System.out.print(nums[i]);
 		}
-		System.out.print("]");
+		System.out.println("]");
 	}
 
 	public static void println(int[][] nums, String prefix) {
