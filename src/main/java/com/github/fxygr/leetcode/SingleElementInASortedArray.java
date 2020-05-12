@@ -16,9 +16,10 @@ public class SingleElementInASortedArray {
 		if (nums.length == 1) {
 			return nums[0];
 		}
-		for (int i = 1; i < nums.length; ) {
-			if (nums[i] != nums[i - 1]) {
-				return nums[i - 1];
+		for (int i = 0; i < nums.length; ) {
+			if (i == (nums.length - 1)
+					|| nums[i] != nums[i + 1]) {
+				return nums[i];
 			}
 			//  nums[i] == nums[i - 1]
 			i += 2;
