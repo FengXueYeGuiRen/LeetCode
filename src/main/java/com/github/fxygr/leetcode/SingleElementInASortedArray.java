@@ -13,19 +13,12 @@ public class SingleElementInASortedArray {
 		if (nums == null || nums.length < 1) {
 			return Integer.MIN_VALUE;
 		}
-		if (nums.length == 1) {
-			return nums[0];
-		}
-		for (int i = 0; i < nums.length; ) {
-			if (i == (nums.length - 1)
-					|| nums[i] != nums[i + 1]) {
+		for (int i = 0; i < nums.length - 1; i += 2) {
+			if (nums[i] != nums[i + 1]) {
 				return nums[i];
 			}
-			//  nums[i] == nums[i - 1]
-			i += 2;
-			i = i < nums.length ? i : nums.length - 1;
 		}
-		return Integer.MIN_VALUE;
+		return nums[nums.length - 1];
 	}
 
 }
