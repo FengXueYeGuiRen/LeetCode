@@ -1,6 +1,4 @@
-package com.github.fxygr.leetcode;
-
-import com.github.fxygr.leetcode.utils.StringUtils;
+package com.github.fxygr.leetcode.utils;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
 package com.github.fxygr.leetcode;
 
+import com.github.fxygr.leetcode.utils.StdOut;
 import org.junit.Before;
 import org.junit.Test;
 
