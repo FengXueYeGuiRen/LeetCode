@@ -26,8 +26,12 @@ public class ValidParenthesesTest {
 
 	@Test
 	public void isValid() {
-		String s = "[]";
+		String s = "";
 		boolean isValidParentheses = isValid(s);
+		assertTrue(isValidParentheses);
+
+		s = "[]";
+		isValidParentheses = isValid(s);
 		assertTrue(isValidParentheses);
 
 		s = "{}";

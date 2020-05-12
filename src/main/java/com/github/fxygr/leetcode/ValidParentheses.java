@@ -1,7 +1,5 @@
 package com.github.fxygr.leetcode;
 
-import com.github.fxygr.leetcode.utils.StringUtils;
-
 import java.util.Stack;
 
 /**
@@ -14,8 +12,7 @@ import java.util.Stack;
 public class ValidParentheses {
 
 	public boolean isValid(String s) {
-		if (StringUtils.isBlank(s)
-				|| s.length() % 2 != 0) {
+		if (s == null || s.length() % 2 != 0) {
 			return false;
 		}
 		Stack<Character> stack = new Stack<>();
@@ -28,6 +25,9 @@ public class ValidParentheses {
 				continue;
 			}
 			//  ch == ')' || ch == '}' || ch == ']'
+			if (stack.empty()) {
+				continue;
+			}
 			Character c = stack.pop();
 			if ((ch == ')' && c == '(')
 					|| (ch == '}' && c == '{')
