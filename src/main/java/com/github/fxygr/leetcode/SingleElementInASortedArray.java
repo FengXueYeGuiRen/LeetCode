@@ -13,6 +13,9 @@ public class SingleElementInASortedArray {
 		if (nums == null || nums.length < 1) {
 			return Integer.MIN_VALUE;
 		}
+		if (nums.length == 1) {
+			return nums[0];
+		}
 		for (int i = 1; i < nums.length; ) {
 			if (nums[i] != nums[i - 1]) {
 				return nums[i - 1];

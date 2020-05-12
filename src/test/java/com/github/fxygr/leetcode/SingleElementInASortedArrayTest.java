@@ -25,8 +25,12 @@ public class SingleElementInASortedArrayTest {
 
 	@Test
 	public void singleNonDuplicate() {
-		int[] nums = new int[]{1, 1, 2, 3, 3, 4, 4, 8, 8};
+		int[] nums = new int[]{1};
 		int singleElement = singleNonDuplicate(nums);
+		assertEquals(1, singleElement);
+
+		nums = new int[]{1, 1, 2, 3, 3, 4, 4, 8, 8};
+		singleElement = singleNonDuplicate(nums);
 		assertEquals(2, singleElement);
 
 		nums = new int[]{3, 3, 7, 7, 10, 11, 11};
