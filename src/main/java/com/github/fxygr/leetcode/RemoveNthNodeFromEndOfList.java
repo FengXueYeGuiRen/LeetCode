@@ -25,7 +25,7 @@ public class RemoveNthNodeFromEndOfList {
 			return head.next;
 		}
 		node = head;
-		for (; size > n; --size) {
+		for (; size > (n + 1); --size) {
 			node = node.next;
 		}
 		if (node.next != null) {

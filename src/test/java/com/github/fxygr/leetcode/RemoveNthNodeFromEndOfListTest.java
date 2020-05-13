@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,20 @@ public class RemoveNthNodeFromEndOfListTest {
 
 	@Test
 	public void removeNthFromEnd() {
+		int[] nums = new int[]{1, 2, 3, 4, 5};
+		int n = 5;
+		ListNode head = removeNthFromEnd(nums, n);
+		assertEquals("2 -> 3 -> 4 -> 5", head.toString());
+
+		nums = new int[]{1, 2, 3, 4, 5};
+		n = 1;
+		head = removeNthFromEnd(nums, n);
+		assertEquals("1 -> 2 -> 3 -> 4", head.toString());
+
+		nums = new int[]{1, 2, 3, 4, 5};
+		n = 2;
+		head = removeNthFromEnd(nums, n);
+		assertEquals("1 -> 2 -> 3 -> 5", head.toString());
 	}
 
 	private ListNode removeNthFromEnd(int[] nums, int n) {
@@ -35,6 +50,7 @@ public class RemoveNthNodeFromEndOfListTest {
 		ListNode node = removeNthNodeFromEndOfList.removeNthFromEnd(head, n);
 
 		System.out.println("Output: " + node);
+		System.out.println();
 		return node;
 	}
 
