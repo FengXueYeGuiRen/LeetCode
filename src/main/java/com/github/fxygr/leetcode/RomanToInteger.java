@@ -1,7 +1,5 @@
 package com.github.fxygr.leetcode;
 
-import com.github.fxygr.leetcode.utils.StringUtils;
-
 /**
  * 13. Roman to Integer
  * (https://leetcode.com/problems/roman-to-integer/)
@@ -14,42 +12,44 @@ public class RomanToInteger {
 	public int romanToInt(String s) {
 		int integer = 0;
 		for (int i = 0; i < s.length(); ) {
-			integer += romanNumeralToInt(s.substring(i, (i + 1) == s.length() ? i : ++i));
+			int endIndex = i + 2;
+			endIndex = endIndex >= s.length() ? s.length() : endIndex;
 
-			i = (i++ < s.length()) ? i : (s.length() - 1);
+			int romanNumeral = romanNumeralToInt(s.substring(i, endIndex));
+			if (romanNumeral > 0) {
+				integer += romanNumeral;
+				i = endIndex;
+				continue;
+			}
+			integer += romanSymbolToInt(s.charAt(i++));
 		}
 		return integer;
 	}
 
 	private int romanNumeralToInt(String romanNumeral) {
-		if (StringUtils.isBlank(romanNumeral)) {
-			return 0;
-		}
 		int integer;
 		switch (romanNumeral) {
 			case "IV":
-				integer = 5;
+				integer = 4;
 				break;
 			case "IX":
 				integer = 9;
 				break;
 			case "XL":
-				integer = 50;
+				integer = 40;
 				break;
 			case "XC":
 				integer = 90;
 				break;
 			case "CD":
-				integer = 500;
+				integer = 400;
 				break;
 			case "CM":
 				integer = 900;
 				break;
 			default:
-				integer = romanSymbolToInt(romanNumeral.charAt(0));
-				if (romanNumeral.length() > 1) {
-					integer += romanSymbolToInt(romanNumeral.charAt(1));
-				}
+				integer = 0;
+				break;
 		}
 		return integer;
 	}
