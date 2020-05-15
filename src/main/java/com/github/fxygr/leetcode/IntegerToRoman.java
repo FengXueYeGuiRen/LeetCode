@@ -52,12 +52,13 @@ public class IntegerToRoman {
 		if (digit == 0) {
 			return "";
 		}
-		if (NUM_ROMAN_MAP.containsKey(digit)) {
-			return NUM_ROMAN_MAP.get(digit);
-		}
 		int integer = digit * times;
 
-		return digitToRoman(integer - times, times) + NUM_ROMAN_MAP.get(times);
+		if (NUM_ROMAN_MAP.containsKey(integer)) {
+			return NUM_ROMAN_MAP.get(integer);
+		}
+		return digitToRoman(digit - 1, times)
+				+ NUM_ROMAN_MAP.get(times);
 	}
 
 }

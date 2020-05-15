@@ -25,8 +25,20 @@ public class IntegerToRomanTest {
 
 	@Test
 	public void intToRoman() {
-		int num = 58;
+		int num = 20;
 		String roman = intToRoman(num);
+		assertEquals("XX", roman);
+
+		num = 30;
+		roman = intToRoman(num);
+		assertEquals("XXX", roman);
+
+		num = 1994;
+		roman = intToRoman(num);
+		assertEquals("MCMXCIV", roman);
+
+		num = 58;
+		roman = intToRoman(num);
 		assertEquals("LVIII", roman);
 
 		num = 9;
