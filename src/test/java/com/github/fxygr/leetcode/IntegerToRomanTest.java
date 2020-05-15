@@ -25,8 +25,12 @@ public class IntegerToRomanTest {
 
 	@Test
 	public void intToRoman() {
-		int num = 9;
+		int num = 58;
 		String roman = intToRoman(num);
+		assertEquals("LVIII", roman);
+
+		num = 9;
+		roman = intToRoman(num);
 		assertEquals("IX", roman);
 
 		num = 4;

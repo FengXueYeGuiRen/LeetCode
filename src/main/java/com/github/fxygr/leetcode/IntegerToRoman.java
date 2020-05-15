@@ -20,6 +20,9 @@ public class IntegerToRoman {
 		NUM_ROMAN_MAP.put(2, "II");
 		NUM_ROMAN_MAP.put(3, "III");
 		NUM_ROMAN_MAP.put(5, "V");
+		NUM_ROMAN_MAP.put(6, "VI");
+		NUM_ROMAN_MAP.put(7, "VII");
+		NUM_ROMAN_MAP.put(8, "VIII");
 		NUM_ROMAN_MAP.put(10, "X");
 		NUM_ROMAN_MAP.put(50, "L");
 		NUM_ROMAN_MAP.put(100, "C");
@@ -41,12 +44,12 @@ public class IntegerToRoman {
 		for (; number > 0; number /= 10, digit *= 10) {
 			int n = number % 10;
 
-			if (NUM_ROMAN_MAP.containsKey(n)) {
-				roman.append(NUM_ROMAN_MAP.get(n));
+			if (NUM_ROMAN_MAP.containsKey(n * digit)) {
+				roman.insert(0, NUM_ROMAN_MAP.get(n * digit));
 				continue;
 			}
-			if (NUM_ROMAN_MAP.containsKey(n * digit)) {
-				roman.append(NUM_ROMAN_MAP.get(n * digit));
+			if (NUM_ROMAN_MAP.containsKey(n)) {
+				roman.insert(0, NUM_ROMAN_MAP.get(n));
 				continue;
 			}
 
