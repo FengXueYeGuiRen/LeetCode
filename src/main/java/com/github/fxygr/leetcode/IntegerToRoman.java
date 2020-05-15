@@ -17,6 +17,8 @@ public class IntegerToRoman {
 
 	static {
 		NUM_ROMAN_MAP.put(1, "I");
+		NUM_ROMAN_MAP.put(2, "II");
+		NUM_ROMAN_MAP.put(3, "III");
 		NUM_ROMAN_MAP.put(5, "V");
 		NUM_ROMAN_MAP.put(10, "X");
 		NUM_ROMAN_MAP.put(50, "L");
@@ -35,17 +37,19 @@ public class IntegerToRoman {
 	public String intToRoman(int num) {
 		StringBuilder roman = new StringBuilder();
 
-		for (int number = num, digit = 1; number > 0; number /= 10) {
+		int number = num, digit = 1;
+		for (; number > 0; number /= 10, digit *= 10) {
 			int n = number % 10;
-			digit *= 10;
+
 			if (NUM_ROMAN_MAP.containsKey(n)) {
 				roman.append(NUM_ROMAN_MAP.get(n));
 				continue;
 			}
-			n *= digit;
-			if (NUM_ROMAN_MAP.containsKey(n)) {
-				roman.append(NUM_ROMAN_MAP.get(n));
+			if (NUM_ROMAN_MAP.containsKey(n * digit)) {
+				roman.append(NUM_ROMAN_MAP.get(n * digit));
+				continue;
 			}
+
 		}
 		return roman.toString();
 	}

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,25 @@ public class IntegerToRomanTest {
 
 	@Test
 	public void intToRoman() {
+		int num = 9;
+		String roman = intToRoman(num);
+		assertEquals("IX", roman);
+
+		num = 4;
+		roman = intToRoman(num);
+		assertEquals("IV", roman);
+
+		num = 3;
+		roman = intToRoman(num);
+		assertEquals("III", roman);
+
+		num = 2;
+		roman = intToRoman(num);
+		assertEquals("II", roman);
+
+		num = 1;
+		roman = intToRoman(num);
+		assertEquals("I", roman);
 	}
 
 	private String intToRoman(int num) {
