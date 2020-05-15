@@ -17,12 +17,7 @@ public class IntegerToRoman {
 
 	static {
 		NUM_ROMAN_MAP.put(1, "I");
-		NUM_ROMAN_MAP.put(2, "II");
-		NUM_ROMAN_MAP.put(3, "III");
 		NUM_ROMAN_MAP.put(5, "V");
-		NUM_ROMAN_MAP.put(6, "VI");
-		NUM_ROMAN_MAP.put(7, "VII");
-		NUM_ROMAN_MAP.put(8, "VIII");
 		NUM_ROMAN_MAP.put(10, "X");
 		NUM_ROMAN_MAP.put(50, "L");
 		NUM_ROMAN_MAP.put(100, "C");
@@ -40,21 +35,29 @@ public class IntegerToRoman {
 	public String intToRoman(int num) {
 		StringBuilder roman = new StringBuilder();
 
-		int number = num, digit = 1;
-		for (; number > 0; number /= 10, digit *= 10) {
-			int n = number % 10;
+		int number = num, times = 1;
+		for (; number > 0; number /= 10, times *= 10) {
+			int digit = number % 10;
 
-			if (NUM_ROMAN_MAP.containsKey(n * digit)) {
-				roman.insert(0, NUM_ROMAN_MAP.get(n * digit));
+			if (NUM_ROMAN_MAP.containsKey(digit * times)) {
+				roman.insert(0, NUM_ROMAN_MAP.get(digit * times));
 				continue;
 			}
-			if (NUM_ROMAN_MAP.containsKey(n)) {
-				roman.insert(0, NUM_ROMAN_MAP.get(n));
-				continue;
-			}
-
+			roman.insert(0, digitToRoman(digit, times));
 		}
 		return roman.toString();
+	}
+
+	private String digitToRoman(int digit, int times) {
+		if (digit == 0) {
+			return "";
+		}
+		if (NUM_ROMAN_MAP.containsKey(digit)) {
+			return NUM_ROMAN_MAP.get(digit);
+		}
+		int integer = digit * times;
+
+		return digitToRoman(integer - times, times) + NUM_ROMAN_MAP.get(times);
 	}
 
 }
