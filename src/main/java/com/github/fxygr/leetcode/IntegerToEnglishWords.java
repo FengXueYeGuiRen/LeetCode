@@ -50,7 +50,7 @@ public class IntegerToEnglishWords {
 		INTEGER_ENGLISH_MAP.put(60, "Sixty");
 		INTEGER_ENGLISH_MAP.put(70, "Seventy");
 		INTEGER_ENGLISH_MAP.put(80, "Eighty");
-		INTEGER_ENGLISH_MAP.put(90, "NineTy");
+		INTEGER_ENGLISH_MAP.put(90, "Ninety");
 	}
 
 	public String numberToWords(int num) {
