@@ -74,6 +74,9 @@ public class IntegerToEnglishWords {
 	}
 
 	private String hundreds2Words(int num) {
+		if (num <= 0) {
+			return "";
+		}
 		if (INTEGER_ENGLISH_MAP.containsKey(num)) {
 			return INTEGER_ENGLISH_MAP.get(num);
 		}
@@ -83,6 +86,9 @@ public class IntegerToEnglishWords {
 		int digit;
 		for (; number > 0; number /= 10, times *= 10) {
 			digit = number % 10;
+			if (digit == 0) {
+				continue;
+			}
 			//  tens place
 			if (digit == 1 && times == 10) {
 				englishWords.delete(0, englishWords.length());
