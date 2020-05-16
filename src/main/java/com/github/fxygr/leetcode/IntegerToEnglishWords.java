@@ -92,7 +92,7 @@ public class IntegerToEnglishWords {
 			//  tens place
 			if (digit == 1 && times == 10) {
 				englishWords.delete(0, englishWords.length());
-				englishWords.append(" ").append(num % 100);
+				englishWords.append(" ").append(INTEGER_ENGLISH_MAP.get(num % 100));
 				continue;
 			}
 			if (TIMES_PLACE_MAP.containsKey(times)) {
