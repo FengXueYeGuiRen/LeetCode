@@ -59,15 +59,15 @@ public class IntegerToEnglishWords {
 		}
 		StringBuilder englishWords = new StringBuilder();
 
-		int number = num, times = 1;
+		int number = num, times = 1000;
 		int hundreds;
-		for (; number <= 0; number /= 1000, times *= 1000) {
+		for (; number > 0; number /= 1000, times *= 1000) {
 			hundreds = number % times;
 
-			englishWords.insert(0, hundreds2Words(hundreds));
-			if (TIMES_PLACE_MAP.containsKey(times)) {
-				englishWords.append(" ").append(TIMES_PLACE_MAP.get(times));
+			if (times > 1000 && TIMES_PLACE_MAP.containsKey(times)) {
+				englishWords.insert(0, " " + TIMES_PLACE_MAP.get(times));
 			}
+			englishWords.insert(0, hundreds2Words(hundreds));
 		}
 		return englishWords.toString().trim();
 	}
@@ -80,19 +80,21 @@ public class IntegerToEnglishWords {
 
 		int number = num, times = 1;
 		int digit;
-		for (; number <= 0; number /= 10, times *= 10) {
-			digit = number % times;
+		for (; number > 0; number /= 10, times *= 10) {
+			digit = number % 10;
 			//  tens place
 			if (digit == 1 && times == 10) {
 				englishWords.delete(0, englishWords.length());
 				englishWords.append(" ").append(num % 100);
 				continue;
 			}
-			if (INTEGER_ENGLISH_MAP.containsKey(digit * times)) {
-				englishWords.append(" ").append(INTEGER_ENGLISH_MAP.get(digit * times));
-			}
 			if (TIMES_PLACE_MAP.containsKey(times)) {
-				englishWords.append(" ").append(TIMES_PLACE_MAP.get(times));
+				englishWords.insert(0, " " + TIMES_PLACE_MAP.get(times));
+			}
+			if (INTEGER_ENGLISH_MAP.containsKey(digit * times)) {
+				englishWords.insert(0, " " + INTEGER_ENGLISH_MAP.get(digit * times));
+			} else {
+				englishWords.insert(0, " " + INTEGER_ENGLISH_MAP.get(digit));
 			}
 		}
 		return englishWords.toString().trim();
