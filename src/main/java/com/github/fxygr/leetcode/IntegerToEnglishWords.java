@@ -22,6 +22,7 @@ public class IntegerToEnglishWords {
 		TIMES_PLACE_MAP.put(1000000000, "Billion");
 
 
+		INTEGER_ENGLISH_MAP.put(0, "Zero");
 		INTEGER_ENGLISH_MAP.put(1, "One");
 		INTEGER_ENGLISH_MAP.put(2, "Two");
 		INTEGER_ENGLISH_MAP.put(3, "Three");
