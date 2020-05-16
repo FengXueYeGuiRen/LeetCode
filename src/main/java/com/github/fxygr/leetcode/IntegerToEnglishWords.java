@@ -78,7 +78,7 @@ public class IntegerToEnglishWords {
 			return "";
 		}
 		if (INTEGER_ENGLISH_MAP.containsKey(num)) {
-			return INTEGER_ENGLISH_MAP.get(num);
+			return " " + INTEGER_ENGLISH_MAP.get(num);
 		}
 		StringBuilder englishWords = new StringBuilder();
 
