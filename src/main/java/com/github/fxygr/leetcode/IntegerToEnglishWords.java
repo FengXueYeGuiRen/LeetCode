@@ -59,12 +59,12 @@ public class IntegerToEnglishWords {
 		}
 		StringBuilder englishWords = new StringBuilder();
 
-		int number = num, times = 1000;
+		int number = num, times = 1;
 		int hundreds;
 		for (; number > 0; number /= 1000, times *= 1000) {
-			hundreds = number % times;
+			hundreds = number % 1000;
 
-			if (times > 1000 && TIMES_PLACE_MAP.containsKey(times)) {
+			if (TIMES_PLACE_MAP.containsKey(times)) {
 				englishWords.insert(0, " " + TIMES_PLACE_MAP.get(times));
 			}
 			englishWords.insert(0, hundreds2Words(hundreds));
@@ -97,7 +97,7 @@ public class IntegerToEnglishWords {
 				englishWords.insert(0, " " + INTEGER_ENGLISH_MAP.get(digit));
 			}
 		}
-		return englishWords.toString().trim();
+		return englishWords.toString();
 	}
 
 }
