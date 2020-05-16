@@ -65,7 +65,7 @@ public class IntegerToEnglishWords {
 		for (; number > 0; number /= 1000, times *= 1000) {
 			hundreds = number % 1000;
 
-			if (TIMES_PLACE_MAP.containsKey(times)) {
+			if (hundreds > 0 && TIMES_PLACE_MAP.containsKey(times)) {
 				englishWords.insert(0, " " + TIMES_PLACE_MAP.get(times));
 			}
 			englishWords.insert(0, hundreds2Words(hundreds));
