@@ -25,8 +25,12 @@ public class IntegerToEnglishWordsTest {
 
 	@Test
 	public void numberToWords() {
-		int num = 0;
+		int num = 17;
 		String englishWords = numberToWords(num);
+		assertEquals("Seventeen", englishWords);
+
+		num = 0;
+		englishWords = numberToWords(num);
 		assertEquals("Zero", englishWords);
 
 		num = 1234567891;
