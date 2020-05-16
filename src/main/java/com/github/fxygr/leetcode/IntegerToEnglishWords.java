@@ -47,7 +47,7 @@ public class IntegerToEnglishWords {
 		INTEGER_ENGLISH_MAP.put(20, "Twenty");
 		INTEGER_ENGLISH_MAP.put(30, "Thirty");
 		INTEGER_ENGLISH_MAP.put(40, "Forty");
-		INTEGER_ENGLISH_MAP.put(50, "Fifteen");
+		INTEGER_ENGLISH_MAP.put(50, "Fifty");
 		INTEGER_ENGLISH_MAP.put(60, "Sixty");
 		INTEGER_ENGLISH_MAP.put(70, "Seventy");
 		INTEGER_ENGLISH_MAP.put(80, "Eighty");
