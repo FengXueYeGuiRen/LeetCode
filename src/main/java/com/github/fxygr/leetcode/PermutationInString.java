@@ -2,9 +2,6 @@ package com.github.fxygr.leetcode;
 
 import com.github.fxygr.leetcode.utils.StringUtils;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * 567. Permutation in String
  * (https://leetcode.com/problems/permutation-in-string/)
@@ -15,40 +12,33 @@ import java.util.Set;
 public class PermutationInString {
 
 	public boolean checkInclusion(String s1, String s2) {
-		if (StringUtils.isBlank(s1) || StringUtils.isBlank(s2)) {
+		if (StringUtils.isBlank(s1)
+				|| StringUtils.isBlank(s2)
+				|| s1.length() > s2.length()) {
 			return false;
 		}
-		Set<Character> s1Set = toSet(s1);
-		int s1SetSize = s1Set.size();
+		String s1s = s1;
 
 		int preInclusionIndex = -1;
 		for (int i = 0; i < s2.length(); ++i) {
-			if (s1Set.isEmpty()) {
+			if (s1s.isEmpty()) {
 				return true;
 			}
-			if (s1Set.contains(s2.charAt(i))) {
-				s1Set.remove(s2.charAt(i));
+			if (s1s.contains("" + s2.charAt(i))) {
+				s1s = s1s.replaceFirst("" + s2.charAt(i), "");
 				if (preInclusionIndex < 0) {
 					preInclusionIndex = i;
 				}
 				continue;
 			}//  !s1Set.contains(s2.charAt(i))
-			if (s1Set.size() != s1SetSize) {
-				s1Set = toSet(s1);
+			if (s1s.length() != s1.length()) {
+				s1s = s1;
 
 				i = preInclusionIndex;
 				preInclusionIndex = -1;
 			}
 		}
-		return s1Set.isEmpty();
-	}
-
-	private Set<Character> toSet(String s) {
-		Set<Character> set = new HashSet<>();
-		for (int i = 0; i < s.length(); ++i) {
-			set.add(s.charAt(i));
-		}
-		return set;
+		return s1s.isEmpty();
 	}
 
 }
