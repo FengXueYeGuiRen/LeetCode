@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +26,15 @@ public class PermutationInStringTest {
 
 	@Test
 	public void checkInclusion() {
+		String s1 = "ab";
+		String s2 = "eidbaooo";
+		boolean inclusion = checkInclusion(s1, s2);
+		assertTrue(inclusion);
+
+		s1 = "ab";
+		s2 = "eidboaoo";
+		inclusion = checkInclusion(s1, s2);
+		assertFalse(inclusion);
 	}
 
 	private boolean checkInclusion(String s1, String s2) {

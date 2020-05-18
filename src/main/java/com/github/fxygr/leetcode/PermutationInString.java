@@ -21,6 +21,9 @@ public class PermutationInString {
 		Set<Character> s1Set = toSet(s1);
 		int s1SetSize = s1Set.size();
 		for (int i = 0; i < s2.length(); ++i) {
+			if (s1Set.isEmpty()) {
+				return true;
+			}
 			if (s1Set.contains(s2.charAt(i))) {
 				s1Set.remove(s2.charAt(i));
 				continue;
