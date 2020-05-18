@@ -2,6 +2,9 @@ package com.github.fxygr.leetcode;
 
 import com.github.fxygr.leetcode.utils.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 567. Permutation in String
  * (https://leetcode.com/problems/permutation-in-string/)
@@ -17,28 +20,43 @@ public class PermutationInString {
 				|| s1.length() > s2.length()) {
 			return false;
 		}
-		String s1s = s1;
+		Map<Character, Integer> s1Map = toMap(s1);
 
 		int preInclusionIndex = -1;
 		for (int i = 0; i < s2.length(); ++i) {
-			if (s1s.isEmpty()) {
+			if (s1Map.isEmpty()) {
 				return true;
 			}
-			if (s1s.contains("" + s2.charAt(i))) {
-				s1s = s1s.replaceFirst("" + s2.charAt(i), "");
+			if (s1Map.containsKey(s2.charAt(i))) {
+				s1Map.put(s2.charAt(i), s1Map.get(s2.charAt(i)) - 1);
+				if (s1Map.get(s2.charAt(i)) < 1) {
+					s1Map.remove(s2.charAt(i));
+				}
 				if (preInclusionIndex < 0) {
 					preInclusionIndex = i;
 				}
 				continue;
-			}//  !s1Set.contains(s2.charAt(i))
-			if (s1s.length() != s1.length()) {
-				s1s = s1;
+			}//  !s1Map.containsKey(s2.charAt(i))
+			if (s1Map.size() != s1.length()) {
+				s1Map = toMap(s1);
 
 				i = preInclusionIndex;
 				preInclusionIndex = -1;
 			}
 		}
-		return s1s.isEmpty();
+		return s1Map.isEmpty();
+	}
+
+	private Map<Character, Integer> toMap(String s) {
+		Map<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < s.length(); ++i) {
+			if (map.containsKey(s.charAt(i))) {
+				map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+			} else {
+				map.put(s.charAt(i), 1);
+			}
+		}
+		return map;
 	}
 
 }
