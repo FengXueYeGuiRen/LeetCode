@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public class PermutationInString {
 
+	private Map<Character, Integer> s1CharacterFrequencyMap;
+
 	public boolean checkInclusion(String s1, String s2) {
 		if (StringUtils.isBlank(s1)
 				|| StringUtils.isBlank(s2)
@@ -21,33 +23,40 @@ public class PermutationInString {
 			return false;
 		}
 		Map<Character, Integer> s1Map = toMap(s1);
+		int s1MapValues = s1.length();
 
 		int preInclusionIndex = -1;
+		boolean inclusion = false;
 		for (int i = 0; i < s2.length(); ++i) {
-			if (s1Map.isEmpty()) {
+			if (s1MapValues == 0) {
 				return true;
 			}
-			if (s1Map.containsKey(s2.charAt(i))) {
+			Integer value = s1Map.get(s2.charAt(i));
+			if (value != null && value > 0) {
 				s1Map.put(s2.charAt(i), s1Map.get(s2.charAt(i)) - 1);
-				if (s1Map.get(s2.charAt(i)) < 1) {
-					s1Map.remove(s2.charAt(i));
-				}
-				if (preInclusionIndex < 0) {
+				--s1MapValues;
+
+				if (!inclusion) {
 					preInclusionIndex = i;
+					inclusion = true;
 				}
 				continue;
 			}//  !s1Map.containsKey(s2.charAt(i))
-			if (s1Map.size() != s1.length()) {
+			if (s1MapValues != s1.length()) {
 				s1Map = toMap(s1);
+				s1MapValues = s1.length();
 
 				i = preInclusionIndex;
-				preInclusionIndex = -1;
+				inclusion = false;
 			}
 		}
-		return s1Map.isEmpty();
+		return s1MapValues == 0;
 	}
 
 	private Map<Character, Integer> toMap(String s) {
+		if (s1CharacterFrequencyMap != null) {
+			return new HashMap<>(s1CharacterFrequencyMap);
+		}// s1CharacterFrequencyMap == null
 		Map<Character, Integer> map = new HashMap<>();
 		for (int i = 0; i < s.length(); ++i) {
 			if (map.containsKey(s.charAt(i))) {
@@ -56,6 +65,7 @@ public class PermutationInString {
 				map.put(s.charAt(i), 1);
 			}
 		}
+		s1CharacterFrequencyMap = new HashMap<>(map);
 		return map;
 	}
 

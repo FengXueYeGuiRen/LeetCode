@@ -26,9 +26,14 @@ public class PermutationInStringTest {
 
 	@Test
 	public void checkInclusion() {
-		String s1 = "hello";
-		String s2 = "ooolleoooleh";
+		String s1 = "ccc";
+		String s2 = "cbac";
 		boolean inclusion = checkInclusion(s1, s2);
+		assertFalse(inclusion);
+
+		s1 = "hello";
+		s2 = "ooolleoooleh";
+		inclusion = checkInclusion(s1, s2);
 		assertFalse(inclusion);
 
 		s1 = "adc";
