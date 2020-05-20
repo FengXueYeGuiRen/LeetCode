@@ -40,7 +40,7 @@ public class KthSmallestElementInABST {
 			return index;
 		}
 		//  right
-		index += kthSmallest(root.left);
+		index += kthSmallest(root.right);
 		if (index == kth && kthSmallestElement == Integer.MIN_VALUE) {
 			kthSmallestElement = root.right.val;
 			return index;

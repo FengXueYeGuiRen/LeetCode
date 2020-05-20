@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,33 @@ public class KthSmallestElementInABSTTest {
 
 	@Test
 	public void kthSmallest() {
+		TreeNode root = new TreeNode(3);
+		root.right = new TreeNode(4);
+
+		int k = 2;
+		int kthSmallestElement = kthSmallest(root, k);
+		assertEquals(4, kthSmallestElement);
+
+		k = 1;
+		kthSmallestElement = kthSmallest(root, k);
+		assertEquals(3, kthSmallestElement);
+
+
+		root = new TreeNode(3);
+		root.left = new TreeNode(1);
+		root.right = new TreeNode(4);
+
+		k = 3;
+		kthSmallestElement = kthSmallest(root, k);
+		assertEquals(4, kthSmallestElement);
+
+		k = 2;
+		kthSmallestElement = kthSmallest(root, k);
+		assertEquals(3, kthSmallestElement);
+
+		k = 1;
+		kthSmallestElement = kthSmallest(root, k);
+		assertEquals(1, kthSmallestElement);
 	}
 
 	private int kthSmallest(TreeNode root, int k) {
