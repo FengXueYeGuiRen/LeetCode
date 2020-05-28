@@ -21,7 +21,14 @@ public class ReverseInteger {
 		for (; naturalNumber > 0; naturalNumber /= 10) {
 			reverse.append(naturalNumber % 10);
 		}
-		int integer = Integer.parseInt(reverse.toString());
+		String num = reverse.toString();
+
+		int integer;
+		try {
+			integer = Integer.parseInt(num);
+		} catch (NumberFormatException e) {
+			integer = 0;
+		}
 		return integer;
 	}
 

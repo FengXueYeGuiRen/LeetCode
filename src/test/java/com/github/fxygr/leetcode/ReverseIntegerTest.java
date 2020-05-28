@@ -25,8 +25,12 @@ public class ReverseIntegerTest {
 
 	@Test
 	public void reverse() {
-		int integer = 123;
+		int integer = 1534236469;
 		int reverse = reverse(integer);
+		assertEquals(0, reverse);
+
+		integer = 123;
+		reverse = reverse(integer);
 		assertEquals(321, reverse);
 
 		integer = -123;
