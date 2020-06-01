@@ -44,24 +44,9 @@ public class InvertBinaryTreeTest {
 		int i = 0;
 
 		TreeNode root = new TreeNode(nums[i++]);
-
+		InsertIntoABinarySearchTree insertIntoABinarySearchTree = new InsertIntoABinarySearchTree();
 		while (i < nums.length) {
-			addNode4BinaryTree(nums[i++], root);
-		}
-		return root;
-	}
-
-	private TreeNode addNode4BinaryTree(int num, TreeNode root) {
-		if (root == null) {
-			return new TreeNode(num);
-		}
-		if (num < root.val) {
-			root.left = addNode4BinaryTree(num, root.left);
-			return root;
-		}
-		if (num > root.val) {
-			root.right = addNode4BinaryTree(num, root.right);
-			return root;
+			insertIntoABinarySearchTree.insertIntoBST(root, nums[i++]);
 		}
 		return root;
 	}
