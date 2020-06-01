@@ -46,7 +46,7 @@ public class InvertBinaryTreeTest {
 		TreeNode root = new TreeNode(nums[i++]);
 
 		while (i < nums.length) {
-			addNode4BinaryTree(i++, root);
+			addNode4BinaryTree(nums[i++], root);
 		}
 		return root;
 	}
@@ -55,13 +55,12 @@ public class InvertBinaryTreeTest {
 		if (root == null) {
 			return new TreeNode(num);
 		}
-		TreeNode currentNode = root;
-		if (root.left != null && num < root.left.val) {
-			currentNode.left = addNode4BinaryTree(num, currentNode.left);
+		if (num < root.val) {
+			root.left = addNode4BinaryTree(num, root.left);
 			return root;
 		}
-		if (root.right != null && num > root.right.val) {
-			currentNode.right = addNode4BinaryTree(num, currentNode.right);
+		if (num > root.val) {
+			root.right = addNode4BinaryTree(num, root.right);
 			return root;
 		}
 		return root;
