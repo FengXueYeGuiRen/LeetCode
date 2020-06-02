@@ -12,10 +12,13 @@ public class KthSmallestElementInABST {
 	private int kth;
 	private int kthSmallestElement;
 
+	private int index = 0;
+
 	public int kthSmallest(TreeNode root, int k) {
 		if (root == null || k < 1) {
 			return Integer.MIN_VALUE;
 		}
+		index = 0;
 		kth = k;
 		kthSmallestElement = Integer.MIN_VALUE;
 
@@ -23,29 +26,20 @@ public class KthSmallestElementInABST {
 		return kthSmallestElement;
 	}
 
-	private int kthSmallest(TreeNode root) {
+	private void kthSmallest(TreeNode root) {
 		if (root == null) {
-			return 0;
+			return;
 		}
 		//  left
-		int index = kthSmallest(root.left);
-		if (index == kth && kthSmallestElement == Integer.MIN_VALUE) {
-			kthSmallestElement = root.left.val;
-			return index;
-		}
+		kthSmallest(root.left);
 		//  root
 		++index;
 		if (index == kth && kthSmallestElement == Integer.MIN_VALUE) {
 			kthSmallestElement = root.val;
-			return index;
+			return;
 		}
 		//  right
-		index += kthSmallest(root.right);
-		if (index == kth && kthSmallestElement == Integer.MIN_VALUE) {
-			kthSmallestElement = root.right.val;
-			return index;
-		}
-		return index;
+		kthSmallest(root.right);
 	}
 
 }
