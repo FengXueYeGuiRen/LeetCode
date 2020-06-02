@@ -25,11 +25,19 @@ public class KthSmallestElementInABSTTest {
 
 	@Test
 	public void kthSmallest() {
-		TreeNode root = new TreeNode(3);
-		root.right = new TreeNode(4);
+		Integer[] nums = new Integer[]{5, 3, 6, 2, 4, null, null, 1};
+		TreeNode root = createBST(nums);
 
-		int k = 2;
+		int k = 3;
 		int kthSmallestElement = kthSmallest(root, k);
+		assertEquals(3, kthSmallestElement);
+
+
+		nums = new Integer[]{3, null, 4};
+		root = createBST(nums);
+
+		k = 2;
+		kthSmallestElement = kthSmallest(root, k);
 		assertEquals(4, kthSmallestElement);
 
 		k = 1;
@@ -37,21 +45,32 @@ public class KthSmallestElementInABSTTest {
 		assertEquals(3, kthSmallestElement);
 
 
-		root = new TreeNode(3);
-		root.left = new TreeNode(1);
-		root.right = new TreeNode(4);
+		nums = new Integer[]{3, 1, 4, null, 2};
+		root = createBST(nums);
 
 		k = 3;
 		kthSmallestElement = kthSmallest(root, k);
-		assertEquals(4, kthSmallestElement);
+		assertEquals(3, kthSmallestElement);
 
 		k = 2;
 		kthSmallestElement = kthSmallest(root, k);
-		assertEquals(3, kthSmallestElement);
+		assertEquals(2, kthSmallestElement);
 
 		k = 1;
 		kthSmallestElement = kthSmallest(root, k);
 		assertEquals(1, kthSmallestElement);
+	}
+
+	private TreeNode createBST(Integer[] nums) {
+		TreeNode root = null;
+		InsertIntoABinarySearchTree tree = new InsertIntoABinarySearchTree();
+		for (Integer num : nums) {
+			if (num == null) {
+				continue;
+			}
+			root = tree.insertIntoBST(root, num);
+		}
+		return root;
 	}
 
 	private int kthSmallest(TreeNode root, int k) {
