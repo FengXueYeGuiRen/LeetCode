@@ -26,8 +26,12 @@ public class TwoCitySchedulingTest {
 
 	@Test
 	public void twoCitySchedCost() {
-		int[][] costs = new int[][]{{10, 20}, {30, 200}, {400, 50}, {30, 20}};
+		int[][] costs = new int[][]{{259, 770}, {448, 54}, {926, 667}, {184, 139}, {840, 118}, {577, 469}};
 		int cost = twoCitySchedCost(costs);
+		assertEquals(1859, cost);
+
+		costs = new int[][]{{10, 20}, {30, 200}, {400, 50}, {30, 20}};
+		cost = twoCitySchedCost(costs);
 		assertEquals(110, cost);
 	}
 
