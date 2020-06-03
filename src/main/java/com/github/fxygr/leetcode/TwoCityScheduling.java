@@ -18,11 +18,18 @@ public class TwoCityScheduling {
 		Arrays.sort(costs, new Comparator<int[]>() {
 			@Override
 			public int compare(int[] a1, int[] a2) {
-				return Integer.compare(a1[0] + a1[1], a2[0] + a2[1]);
+				return Integer.compare(Math.abs(a2[0] - a2[1]), Math.abs(a1[0] - a1[1]));
 			}
 		});
 		int aCount = 0, bCount = 0;
+		int n = costs.length / 2;
 		for (int i = 0; i < costs.length; ++i) {
+			if (aCount >= n || bCount >= n) {
+				int j = aCount < bCount ? 0 : 1;
+				cost += costs[i][j];
+
+				continue;
+			}// aCount < n && bCount < n
 			if (costs[i][0] < costs[i][1]) {
 				cost += costs[i][0];
 				++aCount;
@@ -31,28 +38,6 @@ public class TwoCityScheduling {
 			}// costs[i][0] > costs[i][1]
 			cost += costs[i][1];
 			++bCount;
-		}
-		if (aCount == bCount) {
-			return cost;
-		}
-		int n = costs.length / 2;
-		Arrays.sort(costs, new Comparator<int[]>() {
-			@Override
-			public int compare(int[] a1, int[] a2) {
-				return Integer.compare(Math.abs(a1[0] - a1[1]), Math.abs(a2[0] - a2[1]));
-			}
-		});
-		int minCount = aCount;
-		int j = 0;
-		if (aCount > bCount) {
-			minCount = bCount;
-			j = 1;
-		}
-		for (int i = 0; i < n - minCount; ++i) {
-			if (costs[i][j] > costs[i][(j + 1) % 2]) {
-				cost += costs[i][j];
-				cost -= costs[i][(j + 1) % 2];
-			}
 		}
 		return cost;
 	}
