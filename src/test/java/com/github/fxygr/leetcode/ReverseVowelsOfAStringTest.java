@@ -25,8 +25,12 @@ public class ReverseVowelsOfAStringTest {
 
 	@Test
 	public void reverseVowels() {
-		String s = "leetcode";
+		String s = "aA";
 		String reverse = reverseVowels(s);
+		assertEquals("Aa", reverse);
+
+		s = "leetcode";
+		reverse = reverseVowels(s);
 		assertEquals("leotcede", reverse);
 
 		s = "hello";
