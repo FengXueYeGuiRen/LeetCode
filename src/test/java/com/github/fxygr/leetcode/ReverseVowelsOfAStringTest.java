@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,13 @@ public class ReverseVowelsOfAStringTest {
 
 	@Test
 	public void reverseVowels() {
+		String s = "leetcode";
+		String reverse = reverseVowels(s);
+		assertEquals("leotcede", reverse);
+
+		s = "hello";
+		reverse = reverseVowels(s);
+		assertEquals("holle", reverse);
 	}
 
 	private String reverseVowels(String s) {
