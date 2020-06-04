@@ -32,7 +32,7 @@ public class ReverseVowelsOfAString {
 		if (StringUtils.isBlank(s)) {
 			return s;
 		}
-		char[] chars = s.trim().toCharArray();
+		char[] chars = s.toCharArray();
 		char temp;
 		for (int i = 0, j = s.length() - 1; i < j; ++i, --j) {
 			while (i < j && !VOWELS.contains(chars[i])) {
