@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,9 @@ public class ReverseWordsInAStringIIITest {
 
 	@Test
 	public void reverseWords() {
+		String s = "Let's take LeetCode contest";
+		String reverse = reverseWords(s);
+		assertEquals("s'teL ekat edoCteeL tsetnoc", reverse);
 	}
 
 	private String reverseWords(String s) {

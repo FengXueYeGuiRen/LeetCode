@@ -24,7 +24,7 @@ public class ReverseWordsInAStringIII {
 				++j;
 			}
 			char temp;
-			for (int k = j - 1; i < k; ++i, --j) {
+			for (int k = j - 1; i <= k; ++i, --k) {
 				temp = chars[i];
 				chars[i] = chars[k];
 				chars[k] = temp;
