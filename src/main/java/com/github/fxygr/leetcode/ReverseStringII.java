@@ -15,17 +15,17 @@ public class ReverseStringII {
 		if (StringUtils.isBlank(s)) {
 			return s;
 		}
-		char[] chars = s.toCharArray();
+		char[] chars = s.trim().toCharArray();
 
 		for (int i = 0; i < s.length(); i += 2 * k) {
-			int j = i, z = j + k;
+			int j = i, z = j + k - 1;
 
 			z = z < s.length() ? z : (s.length() - 1);
 			char temp;
-			for (; j < s.length(); ++j, --z) {
-				temp = chars[i];
-				chars[i] = chars[j];
-				chars[j] = temp;
+			for (; j < s.length() && j < z; ++j, --z) {
+				temp = chars[j];
+				chars[j] = chars[z];
+				chars[z] = temp;
 			}
 		}
 		return String.valueOf(chars);
