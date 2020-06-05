@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,6 +25,25 @@ public class ZigZagConversionTest {
 
 	@Test
 	public void convert() {
+		String s = "PAYPALISHIRING";
+		int numRows = 3;
+		String conversion = convert(s, numRows);
+		assertEquals("PAHNAPLSIIGYIR", conversion);
+
+		s = "PAYPALISHIRING";
+		numRows = 4;
+		conversion = convert(s, numRows);
+		assertEquals("PINALSIGYAHRPI", conversion);
+
+		s = "LEETCODEISHIRING";
+		numRows = 3;
+		conversion = convert(s, numRows);
+		assertEquals("LCIRETOESIIGEDHN", conversion);
+
+		s = "LEETCODEISHIRING";
+		numRows = 4;
+		conversion = convert(s, numRows);
+		assertEquals("LDREOEIIECIHNTSG", conversion);
 	}
 
 	private String convert(String s, int numRows) {

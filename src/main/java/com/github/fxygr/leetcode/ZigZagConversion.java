@@ -16,7 +16,11 @@ public class ZigZagConversion {
 		}
 
 		for (int i = 0; i < s.length(); ) {
-			for (int j = 0; j < numRows && i < s.length(); ++j) {
+			int j = 0;
+			for (; j < numRows && i < s.length(); ++j) {
+				sbs[j].append(s.charAt(i++));
+			}
+			for (j = numRows - 2; j > 0 && i < s.length(); --j) {
 				sbs[j].append(s.charAt(i++));
 			}
 		}
