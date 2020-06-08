@@ -34,6 +34,10 @@ public class PowerOfTwoTest {
 		isPowerOfTwo = isPowerOfTwo(n);
 		assertTrue(isPowerOfTwo);
 
+		n = 4;
+		isPowerOfTwo = isPowerOfTwo(n);
+		assertTrue(isPowerOfTwo);
+
 		n = 3;
 		isPowerOfTwo = isPowerOfTwo(n);
 		assertFalse(isPowerOfTwo);

@@ -10,7 +10,7 @@ package com.github.fxygr.leetcode;
 public class PowerOfTwo {
 
 	public boolean isPowerOfTwo(int n) {
-		if (n == 1 || n == 2) {
+		if (n == 1 || n == 2 || n == 4) {
 			return true;
 		}
 		for (int i = 2; i < n / 2; i *= 2) {
