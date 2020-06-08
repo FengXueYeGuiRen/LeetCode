@@ -26,8 +26,16 @@ public class PowerOfTwoTest {
 
 	@Test
 	public void isPowerOfTwo() {
-		int n = 2147483646;
+		int n = -16;
 		boolean isPowerOfTwo = isPowerOfTwo(n);
+		assertFalse(isPowerOfTwo);
+
+		n = 0;
+		isPowerOfTwo = isPowerOfTwo(n);
+		assertFalse(isPowerOfTwo);
+
+		n = 2147483646;
+		isPowerOfTwo = isPowerOfTwo(n);
 		assertFalse(isPowerOfTwo);
 
 		n = 1073741825;
