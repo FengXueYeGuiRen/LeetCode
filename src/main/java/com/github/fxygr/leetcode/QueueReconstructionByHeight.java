@@ -19,19 +19,35 @@ public class QueueReconstructionByHeight {
 		Arrays.sort(people, new Comparator<int[]>() {
 			@Override
 			public int compare(int[] p1, int[] p2) {
-				int compare = Integer.compare(p1[0] + p1[1], p2[0] + p2[1]);
+				int compare = Integer.compare(p1[1], p2[1]);
 				if (compare != 0) {
 					return compare;
 				}// compare == 0
-				if (p1[1] == 0) {
-					return -1;
-				}
-				if (p2[1] == 0) {
-					return 1;
-				}
-				return Integer.compare(p2[1], p1[1]);
+				return Integer.compare(p1[0], p2[0]);
 			}
 		});
+		sort(people);
+		return people;
+	}
+
+	private int[][] sort(int[][] people) {
+		for (int k = 2; k < people.length; ++k) {
+			for (int i = k, j = k; j < people.length; ++j) {
+				int[] peopleJ = people[j];
+				if (i == j && peopleJ[1] == k) {
+					++i;
+					continue;
+				}
+				if (peopleJ[1] == k) {
+					int z = j;
+					while (z > i) {
+						people[z] = people[--z];
+					}
+					people[i] = peopleJ;
+					++i;
+				}
+			}
+		}
 		return people;
 	}
 
