@@ -13,12 +13,12 @@ public class PowerOfTwo {
 		if (n == 1) {
 			return true;
 		}
-		for (int i = 1; i <= n; i *= 2) {
-			if (i == n) {
-				return true;
+		for (int i = n; i > 1; i /= 2) {
+			if (i % 2 != 0) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 }
