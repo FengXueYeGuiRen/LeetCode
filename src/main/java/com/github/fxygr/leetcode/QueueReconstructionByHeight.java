@@ -20,7 +20,16 @@ public class QueueReconstructionByHeight {
 			@Override
 			public int compare(int[] p1, int[] p2) {
 				int compare = Integer.compare(p1[0] + p1[1], p2[0] + p2[1]);
-				return compare != 0 ? compare : Integer.compare(p2[0], p1[0]);
+				if (compare != 0) {
+					return compare;
+				}// compare == 0
+				if (p1[1] == 0) {
+					return -1;
+				}
+				if (p2[1] == 0) {
+					return 1;
+				}
+				return Integer.compare(p2[1], p1[1]);
 			}
 		});
 		return people;

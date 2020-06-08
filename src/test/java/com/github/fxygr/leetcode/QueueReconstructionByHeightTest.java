@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -25,6 +26,9 @@ public class QueueReconstructionByHeightTest {
 
 	@Test
 	public void reconstructQueue() {
+		int[][] people = new int[][]{{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
+		int[][] result = reconstructQueue(people);
+		assertArrayEquals(new int[][]{{5, 0}, {7, 0}, {5, 2}, {6, 1}, {4, 4}, {7, 1}}, result);
 	}
 
 	private int[][] reconstructQueue(int[][] people) {
