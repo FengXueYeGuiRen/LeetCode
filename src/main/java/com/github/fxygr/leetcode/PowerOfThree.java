@@ -10,11 +10,11 @@ package com.github.fxygr.leetcode;
 public class PowerOfThree {
 
 	public boolean isPowerOfThree(int n) {
-		if (n < 3) {
+		if (n < 1 || n == 2) {
 			return false;
 		}
-		for (int i = n; i > 2; i /= 3) {
-			if (i % 3 != 0) {
+		for (int i = n; i > 1; i /= 3) {
+			if (i % 3 != 0 || i == 2) {
 				return false;
 			}
 		}

@@ -26,8 +26,20 @@ public class PowerOfThreeTest {
 
 	@Test
 	public void isPowerOfThree() {
-		int n = 27;
+		int n = 6;
 		boolean isPowerOfThree = isPowerOfThree(n);
+		assertFalse(isPowerOfThree);
+
+		n = 1;
+		isPowerOfThree = isPowerOfThree(n);
+		assertTrue(isPowerOfThree);
+
+		n = 2;
+		isPowerOfThree = isPowerOfThree(n);
+		assertFalse(isPowerOfThree);
+
+		n = 27;
+		isPowerOfThree = isPowerOfThree(n);
 		assertTrue(isPowerOfThree);
 
 		n = 0;
