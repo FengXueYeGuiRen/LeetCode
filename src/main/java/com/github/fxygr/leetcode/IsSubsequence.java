@@ -1,7 +1,5 @@
 package com.github.fxygr.leetcode;
 
-import com.github.fxygr.leetcode.utils.StringUtils;
-
 /**
  * 392. Is Subsequence
  * (https://leetcode.com/problems/is-subsequence/)
@@ -12,7 +10,7 @@ import com.github.fxygr.leetcode.utils.StringUtils;
 public class IsSubsequence {
 
 	public boolean isSubsequence(String s, String t) {
-		if (StringUtils.isBlank(s) || StringUtils.isBlank(t)) {
+		if (s == null || t == null) {
 			return false;
 		}
 		int sIndex = 0, tIndex = 0;
