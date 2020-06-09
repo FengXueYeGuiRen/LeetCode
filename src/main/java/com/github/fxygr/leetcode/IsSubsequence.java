@@ -13,6 +13,9 @@ public class IsSubsequence {
 		if (s == null || t == null) {
 			return false;
 		}
+		if (t.contains(s)) {
+			return true;
+		}
 		int sIndex = 0, tIndex = 0;
 		for (; sIndex < s.length() && tIndex < t.length(); ++tIndex) {
 			if (s.charAt(sIndex) == t.charAt(tIndex)) {
