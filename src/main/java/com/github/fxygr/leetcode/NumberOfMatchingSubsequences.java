@@ -1,5 +1,7 @@
 package com.github.fxygr.leetcode;
 
+import java.util.Arrays;
+
 /**
  * 792. Number of Matching Subsequences
  * (https://leetcode.com/problems/number-of-matching-subsequences/)
@@ -21,11 +23,22 @@ public class NumberOfMatchingSubsequences {
 		if (words == null || words.length < 1) {
 			return 0;
 		}
+		Arrays.sort(words);
+
 		int matchingNum = 0;
+		String preWord = "";
+		boolean preMatching = false;
 		for (String word : words) {
-			if (isSubsequence.isSubsequence(word, S)) {
-				++matchingNum;
+			if (word.equals(preWord) && !preMatching) {
+				continue;
 			}
+			preMatching = false;
+			if (word.equals(preWord)
+					|| isSubsequence.isSubsequence(word, S)) {
+				++matchingNum;
+				preMatching = true;
+			}
+			preWord = word;
 		}
 		return matchingNum;
 	}
