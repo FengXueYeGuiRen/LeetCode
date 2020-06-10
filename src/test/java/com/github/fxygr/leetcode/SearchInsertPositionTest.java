@@ -28,8 +28,13 @@ public class SearchInsertPositionTest {
 	@Test
 	public void searchInsert() {
 		int[] nums = new int[]{1, 3};
-		int target = 2;
+		int target = 0;
 		int index = searchInsert(nums, target);
+		assertEquals(0, index);
+
+		nums = new int[]{1, 3};
+		target = 2;
+		index = searchInsert(nums, target);
 		assertEquals(1, index);
 
 		nums = new int[]{1, 3, 5, 6};

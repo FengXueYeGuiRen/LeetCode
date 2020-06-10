@@ -9,29 +9,36 @@ package com.github.fxygr.leetcode;
  */
 public class SearchInsertPosition {
 
+	private int[] sortedNums;
+	private int targetValue;
+
 	public int searchInsert(int[] nums, int target) {
 		if (nums == null || nums.length < 1) {
 			return -1;
 		}
-		return binarySearch(nums, 0, nums.length - 1, target);
+		sortedNums = nums;
+		targetValue = target;
+		return binarySearch(0, nums.length - 1);
 	}
 
-	private int binarySearch(
-			int[] nums, int lo, int hi, int target) {
+	private int binarySearch(int lo, int hi) {
 		if (lo >= hi) {
-			if (target > nums[hi]) {
-				return hi + 1;
+			if (targetValue > sortedNums[lo]) {
+				return lo + 1;
 			}
-			return hi;
-		}
+			return lo;
+		}// lo < hi
 		int mid = (lo + hi) / 2;
-		if (target < nums[mid]) {
-			return binarySearch(nums, lo, mid - 1, target);
+		if (targetValue == sortedNums[mid]) {
+			return mid;
 		}
-		if (target > nums[mid]) {
-			return binarySearch(nums, mid + 1, hi, target);
+		if (targetValue < sortedNums[mid]) {
+			hi = mid - 1;
 		}
-		return mid;
+		if (targetValue > sortedNums[mid]) {
+			lo = mid + 1;
+		}
+		return binarySearch(lo, hi);
 	}
 
 }
