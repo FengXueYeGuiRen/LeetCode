@@ -19,10 +19,7 @@ public class SearchInsertPosition {
 	private int binarySearch(
 			int[] nums, int lo, int hi, int target) {
 		if (lo >= hi) {
-			if (target < nums[lo]) {
-				return lo <= 0 ? lo : lo - 1;
-			}
-			if (target > nums[lo]) {
+			if (target > nums[hi]) {
 				return hi + 1;
 			}
 			return hi;
