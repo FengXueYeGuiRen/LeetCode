@@ -52,7 +52,12 @@ public class ValidateIPAddress {
 			if (num.startsWith("0")) {
 				return false;
 			}
-			int n = Integer.parseInt(num);
+			int n;
+			try {
+				n = Integer.parseInt(num);
+			} catch (NumberFormatException e) {
+				return false;
+			}
 			if (n < 0 || n > 255) {
 				return false;
 			}
