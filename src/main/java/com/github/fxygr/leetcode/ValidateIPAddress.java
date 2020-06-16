@@ -35,26 +35,25 @@ public class ValidateIPAddress {
 	}
 
 	private boolean isValidIPv4(String ip) {
-		if (!ip.contains(DOTS_4_IPv4)) {
+		if (!ip.contains(DOTS_4_IPv4)
+				|| ip.startsWith(DOTS_4_IPv4)
+				|| ip.startsWith("0")
+				|| ip.endsWith(DOTS_4_IPv4)) {
 			return false;
 		}
 		String[] nums = ip.split("\\" + DOTS_4_IPv4);
 		if (nums.length != GROUPS_4_IPv4) {
 			return false;
 		}
-		for (int i = 0; i < nums.length; ++i) {
-			if (StringUtils.isBlank(nums[i])) {
+		for (String num : nums) {
+			if (StringUtils.isBlank(num)) {
 				return false;
 			}
-			if (nums[i].length() > 1
-					&& nums[i].startsWith("0")) {
+			if (num.startsWith("0")) {
 				return false;
 			}
-			int num = Integer.parseInt(nums[i]);
-			if (i == 0 && num == 0) {
-				return false;
-			}
-			if (num < 0 || num > 255) {
+			int n = Integer.parseInt(num);
+			if (n < 0 || n > 255) {
 				return false;
 			}
 		}
@@ -62,7 +61,9 @@ public class ValidateIPAddress {
 	}
 
 	private boolean isValidIPv6(String ip) {
-		if (!ip.contains(COLONS_4_IPv6)) {
+		if (!ip.contains(COLONS_4_IPv6)
+				|| ip.startsWith(COLONS_4_IPv6)
+				|| ip.endsWith(COLONS_4_IPv6)) {
 			return false;
 		}
 		String[] hexadecimalDigits = ip.split(COLONS_4_IPv6);
