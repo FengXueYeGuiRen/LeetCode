@@ -18,6 +18,9 @@ public class ValidateIPAddress {
 	private static final String DOTS_4_IPv4 = ".";
 	private static final String COLONS_4_IPv6 = ":";
 
+	private static final int GROUPS_4_IPv4 = 4;
+	private static final int GROUPS_4_IPv6 = 8;
+
 	public String validIPAddress(String IP) {
 		if (StringUtils.isBlank(IP)) {
 			return NEITHER;
@@ -35,16 +38,23 @@ public class ValidateIPAddress {
 		if (!ip.contains(DOTS_4_IPv4)) {
 			return false;
 		}
-		String[] nums = ip.split(DOTS_4_IPv4);
+		String[] nums = ip.split("\\" + DOTS_4_IPv4);
+		if (nums.length != GROUPS_4_IPv4) {
+			return false;
+		}
 		for (int i = 0; i < nums.length; ++i) {
 			if (StringUtils.isBlank(nums[i])) {
 				return false;
 			}
-			if (nums[i].compareTo("0") < 0
-					|| nums[i].compareTo("255") > 0) {
+			if (nums[i].length() > 1
+					&& nums[i].startsWith("0")) {
 				return false;
 			}
-			if (nums[i].length() > 1 && nums[i].startsWith("0")) {
+			int num = Integer.parseInt(nums[i]);
+			if (i == 0 && num == 0) {
+				return false;
+			}
+			if (num < 0 || num > 255) {
 				return false;
 			}
 		}
@@ -56,13 +66,16 @@ public class ValidateIPAddress {
 			return false;
 		}
 		String[] hexadecimalDigits = ip.split(COLONS_4_IPv6);
+		if (hexadecimalDigits.length != GROUPS_4_IPv6) {
+			return false;
+		}
 		for (String digit : hexadecimalDigits) {
 			if (StringUtils.isBlank(digit)) {
 				return false;
 			}
-			if (digit == "00"
-					|| digit == "000"
-					|| digit == "0000") {
+			if ("00".equals(digit)
+					|| "000".equals(digit)
+					|| "0000".equals(digit)) {
 				return false;
 			}
 		}
