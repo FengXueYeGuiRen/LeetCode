@@ -83,10 +83,12 @@ public class ValidateIPAddress {
 				return false;
 			}
 			for (char ch : digit.toCharArray()) {
-				if ((ch > 'f' && ch <= 'z')
-						|| (ch > 'F' && ch <= 'Z')) {
-					return false;
+				if ((ch >= '0' && ch <= '9')
+						|| (ch >= 'a' && ch <= 'f')
+						|| (ch >= 'A' && ch <= 'F')) {
+					continue;
 				}
+				return false;
 			}
 		}
 		return true;

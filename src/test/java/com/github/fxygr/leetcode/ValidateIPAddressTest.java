@@ -25,8 +25,12 @@ public class ValidateIPAddressTest {
 
 	@Test
 	public void validIPAddress() {
-		String ip = "20EE:FGb8:85a3:0:0:8A2E:0370:7334";
+		String ip = "1081:db8:85a3:01:-0:8A2E:0370:7334";
 		String validIPAddress = validIPAddress(ip);
+		assertEquals(ValidateIPAddress.NEITHER, validIPAddress);
+
+		ip = "20EE:FGb8:85a3:0:0:8A2E:0370:7334";
+		validIPAddress = validIPAddress(ip);
 		assertEquals(ValidateIPAddress.NEITHER, validIPAddress);
 
 		ip = "2001:0db8:85a3:0000:0:8A2E:0370:733a";
