@@ -58,7 +58,8 @@ public class ValidateIPAddress {
 			} catch (NumberFormatException e) {
 				return false;
 			}
-			if (n < 0 || n > 255) {
+			if (num.startsWith("-") || num.startsWith("+")
+					|| n < 0 || n > 255) {
 				return false;
 			}
 		}
