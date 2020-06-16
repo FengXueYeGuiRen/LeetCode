@@ -82,6 +82,12 @@ public class ValidateIPAddress {
 			if (digit.length() > 4) {
 				return false;
 			}
+			for (char ch : digit.toCharArray()) {
+				if ((ch > 'f' && ch <= 'z')
+						|| (ch > 'F' && ch <= 'Z')) {
+					return false;
+				}
+			}
 		}
 		return true;
 	}
