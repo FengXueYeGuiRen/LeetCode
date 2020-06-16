@@ -79,9 +79,7 @@ public class ValidateIPAddress {
 			if (StringUtils.isBlank(digit)) {
 				return false;
 			}
-			if ("00".equals(digit)
-					|| "000".equals(digit)
-					|| "0000".equals(digit)) {
+			if (digit.length() > 4) {
 				return false;
 			}
 		}
