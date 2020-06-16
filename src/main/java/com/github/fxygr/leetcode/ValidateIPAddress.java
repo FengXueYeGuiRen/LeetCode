@@ -45,21 +45,25 @@ public class ValidateIPAddress {
 		if (nums.length != GROUPS_4_IPv4) {
 			return false;
 		}
-		for (String num : nums) {
-			if (StringUtils.isBlank(num)) {
+		for (int i = 0; i < nums.length; ++i) {
+			if (StringUtils.isBlank(nums[i])) {
 				return false;
 			}
-			if (num.startsWith("0")) {
+			if (nums[i].length() > 1 && nums[i].startsWith("0")) {
 				return false;
 			}
 			int n;
 			try {
-				n = Integer.parseInt(num);
+				n = Integer.parseInt(nums[i]);
 			} catch (NumberFormatException e) {
 				return false;
 			}
-			if (num.startsWith("-") || num.startsWith("+")
-					|| n < 0 || n > 255) {
+			if (i == 0 && n == 0) {
+				return false;
+			}
+			if (n < 0 || n > 255
+					|| nums[i].startsWith("-")
+					|| nums[i].startsWith("+")) {
 				return false;
 			}
 		}
