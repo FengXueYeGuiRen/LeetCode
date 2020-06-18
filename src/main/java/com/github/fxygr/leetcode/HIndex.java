@@ -10,6 +10,9 @@ package com.github.fxygr.leetcode;
 public class HIndex {
 
 	public int hIndex(int[] citations) {
+		if (citations == null || citations.length < 1) {
+			return 0;
+		}
 		int average = average(citations);
 		int h = average;
 
