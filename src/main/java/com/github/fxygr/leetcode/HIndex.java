@@ -21,26 +21,23 @@ public class HIndex {
 			return 1;
 		}
 		int average = average(citations);
-		int h = average;
+		int h = (average <= citations.length ? average : citations.length);
 
 		while (true) {
 			while (isHIndex(h, citations)) {
 				++h;
 			}
 			if (h != average) {
-				--h;
-				break;
+				return --h;
 			}
 			h = average - 1;
 			while (isHIndex(h, citations)) {
 				--h;
 			}
 			if (h != average) {
-				++h;
-				break;
+				return ++h;
 			}
 		}
-		return h <= citations.length ? h : citations.length;
 	}
 
 	private boolean isHIndex(int h, int[] citations) {
