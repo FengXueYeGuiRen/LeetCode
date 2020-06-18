@@ -4,6 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -24,10 +27,13 @@ public class HIndexTest {
 
 	@Test
 	public void hIndex() {
+		int[] citations = new int[]{3, 0, 6, 1, 5};
+		int h = hIndex(citations);
+		assertEquals(3, h);
 	}
 
 	private int hIndex(int[] citations) {
-		System.out.println("Input: " + citations);
+		System.out.println("Input: " + Arrays.toString(citations));
 
 		int h = hIndex.hIndex(citations);
 
