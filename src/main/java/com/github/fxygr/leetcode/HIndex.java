@@ -13,6 +13,9 @@ public class HIndex {
 		if (citations == null || citations.length < 1) {
 			return 0;
 		}
+		if (citations.length < 2) {
+			return 1;
+		}
 		int average = average(citations);
 		int h = average;
 
