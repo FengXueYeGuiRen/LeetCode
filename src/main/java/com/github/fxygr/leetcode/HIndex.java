@@ -25,6 +25,7 @@ public class HIndex {
 				average <= citations.length / 2
 						? average
 						: citations.length / 2);
+		average = h;
 
 		while (true) {
 			while (isHIndex(h, citations)) {

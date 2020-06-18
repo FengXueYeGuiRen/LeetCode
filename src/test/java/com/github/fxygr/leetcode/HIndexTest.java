@@ -27,8 +27,12 @@ public class HIndexTest {
 
 	@Test
 	public void hIndex() {
-		int[] citations = new int[]{1, 7, 9, 2};
+		int[] citations = new int[]{2, 7, 9, 3, 1};
 		int h = hIndex(citations);
+		assertEquals(3, h);
+
+		citations = new int[]{1, 7, 9, 2};
+		h = hIndex(citations);
 		assertEquals(2, h);
 
 		citations = new int[]{1, 2, 100};
