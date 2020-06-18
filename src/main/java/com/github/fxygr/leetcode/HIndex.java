@@ -21,7 +21,10 @@ public class HIndex {
 			return 1;
 		}
 		int average = average(citations);
-		int h = (average <= citations.length ? average : citations.length);
+		int h = (
+				average <= citations.length / 2
+						? average
+						: citations.length / 2);
 
 		while (true) {
 			while (isHIndex(h, citations)) {
