@@ -87,6 +87,12 @@ Tags|标签
 面试题 01.06|[字符串压缩](https://leetcode-cn.com/problems/compress-string-lcci/)|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[String](https://leetcode.com/tag/string)([字符串](https://leetcode-cn.com/tag/string))|[Algorithms](https://leetcode.com/problemset/algorithms/)([算法](https://leetcode-cn.com/problemset/algorithms/))|[Java](src/test/java/com/github/fxygr/leetcode/CompressStringLcciTest.java)
 
 
+###### [Database](https://leetcode.com/problemset/database/)([数据库](https://leetcode-cn.com/problemset/database/))
+\#|Title(题名)|Difficulty(难度)|Solution
+---|---|---|---|---
+175|[Combine Two Tables](https://leetcode.com/problems/combine-two-tables/)([组合两个表](https://leetcode-cn.com/problems/combine-two-tables/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[MySQL](src/main/database/mysql/combine_two_tables.sql)
+
+
 Difficulty|难度
 ---|---
 [Easy](https://leetcode.com/problemset/all/?difficulty=Easy)|[简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95)
