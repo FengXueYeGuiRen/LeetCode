@@ -90,6 +90,7 @@ Tags|标签
 ###### [Database](https://leetcode.com/problemset/database/)([数据库](https://leetcode-cn.com/problemset/database/))
 \#|Title(题名)|Difficulty(难度)|Solution
 ---|---|---|---|---
+176|[Second Highest Salary](https://leetcode.com/problems/second-highest-salary/)([第二高的薪水](https://leetcode-cn.com/problems/second-highest-salary/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[MySQL](src/main/database/mysql/second_highest_salary.sql)
 175|[Combine Two Tables](https://leetcode.com/problems/combine-two-tables/)([组合两个表](https://leetcode-cn.com/problems/combine-two-tables/))|[Easy](https://leetcode.com/problemset/all/?difficulty=Easy)([简单](https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95))|[MySQL](src/main/database/mysql/combine_two_tables.sql)
 
 
