@@ -3,10 +3,16 @@
  * (https://leetcode.com/problems/second-highest-salary/)
  * 176. 第二高的薪水
  */
-SELECT Salary SecondHighestSalary
-FROM Employee
-ORDER BY Salary DESC
-LIMIT 1, 1;
+SELECT
+	(
+		SELECT
+			Salary
+		FROM
+			Employee
+		ORDER BY
+			Salary DESC
+		LIMIT 1, 1
+	) SecondHighestSalary;
 
 /**
  * SQL Schema
