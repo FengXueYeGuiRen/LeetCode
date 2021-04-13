@@ -27,6 +27,10 @@ public class LargestNumberTest {
         int[] nums = new int[]{10, 2};
         String largestNum = largestNumber.largestNumber(nums);
         assertEquals("210", largestNum);
+
+        nums = new int[]{3, 30, 34, 5, 9};
+        largestNum = largestNumber.largestNumber(nums);
+        assertEquals("9534330", largestNum);
     }
 
     @Test
