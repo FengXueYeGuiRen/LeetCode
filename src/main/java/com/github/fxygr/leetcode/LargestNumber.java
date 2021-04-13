@@ -16,7 +16,7 @@ public class LargestNumber {
 
     public String largestNumber(int[] nums) {
         if (nums.length <= 1) {
-            return String.valueOf(nums);
+            return String.valueOf(nums[0]);
         }
         StringBuilder largestNumber = new StringBuilder();
 
