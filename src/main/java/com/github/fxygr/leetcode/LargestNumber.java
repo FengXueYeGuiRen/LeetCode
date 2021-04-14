@@ -37,17 +37,13 @@ public class LargestNumber {
         return largestNumber.toString();
     }
 
-    int lowestDigit(int num) {
-        return num % 10;
-    }
-
     String rightFill(int num, int digits) {
-        int lowestDigit = lowestDigit(num);
         StringBuilder pattern = new StringBuilder("#");
-        for (int i = String.valueOf(num).length(); i < digits; ++i) {
-            pattern.append(lowestDigit);
+        while (pattern.length() < digits) {
+            pattern.append(num);
         }
-        DecimalFormat decimalFormat = new DecimalFormat(pattern.toString());
+        DecimalFormat decimalFormat =
+                new DecimalFormat(pattern.toString().substring(0, digits));
 
         return decimalFormat.format(num);
     }
