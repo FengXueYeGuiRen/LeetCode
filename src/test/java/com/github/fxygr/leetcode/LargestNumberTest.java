@@ -39,6 +39,10 @@ public class LargestNumberTest {
         nums = new int[]{10};
         largestNum = largestNumber.largestNumber(nums);
         assertEquals("10", largestNum);
+
+        nums = new int[]{432, 43243};
+        largestNum = largestNumber.largestNumber(nums);
+        assertEquals("43243432", largestNum);
     }
 
     @Test

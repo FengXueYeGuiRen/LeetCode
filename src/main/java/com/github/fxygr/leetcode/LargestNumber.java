@@ -54,7 +54,7 @@ public class LargestNumber {
 
     int digits(int num) {
         int digits = 0;
-        for (int n = num; !isDigit(n); n = num / 10) {
+        for (int n = num; !isDigit(n); n /= 10) {
             ++digits;
         }
         return ++digits;
